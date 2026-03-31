@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+}
+
+@layer base {
+  * {
+    @apply border-charcoal/10;
+  }
+
+  body {
+    @apply bg-cream text-charcoal;
+  }
+
+  a,
+  button {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .site-container {
+    @apply mx-auto w-full max-w-6xl px-6;
+  }
+
+  .section-spacing {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  .section-anchor {
+    scroll-margin-top: 6rem;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-olive px-6 py-3 text-sm font-medium text-cream hover:bg-olive-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-charcoal px-6 py-3 text-sm font-medium text-charcoal hover:bg-charcoal hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-charcoal;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
