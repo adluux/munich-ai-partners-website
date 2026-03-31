@@ -1,8 +1,10 @@
 import { Footer } from "@/components/Footer";
+import { FinalCTA } from "@/components/FinalCTA";
 import { Guarantee } from "@/components/Guarantee";
 import { Hero } from "@/components/Hero";
 import { HowWeDoIt } from "@/components/HowWeDoIt";
 import { LeadMagnet } from "@/components/LeadMagnet";
+import { MidCTA } from "@/components/MidCTA";
 import { Navbar } from "@/components/Navbar";
 import { Testimonials } from "@/components/Testimonials";
 import { Urgency } from "@/components/Urgency";
@@ -17,11 +19,13 @@ export default function Home() {
       <Hero />
       <Testimonials />
       <Guarantee />
+      <MidCTA />
       <WhatWeDo />
       <WhereWeHelp />
       <HowWeDoIt />
       <WhoWeAre />
       <Urgency />
+      <FinalCTA />
       <LeadMagnet />
       <Footer />
     </main>

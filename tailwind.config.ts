@@ -9,15 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#FAF7F2",
-        "cream-dark": "#F0EDE6",
-        charcoal: "#2C2C2C",
-        olive: "#5C6B4A",
-        "olive-dark": "#4A5A3A",
-        muted: "#6B6B6B",
+        cream: "#F5F0E8",
+        "off-white": "#FAF8F4",
+        "dark-olive": "#3D3D2E",
+        olive: "#6B6B4E",
+        "cta-green": "#4A5A3A",
+        charcoal: "#2D2D2D",
+        "medium-gray": "#666666",
+        border: "#E0DCD4",
+        white: "#FFFFFF",
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
+        serif: ["Georgia", "Times New Roman", "serif"],
       },
     },
   },

@@ -1,15 +1,13 @@
-import Link from "next/link";
-import { CTA_TEXT, GUARANTEE } from "@/lib/content";
+import { Reveal } from "@/components/Reveal";
+import { GUARANTEE } from "@/lib/content";
 
 export function Guarantee() {
   return (
-    <section className="section-spacing bg-cream-dark">
-      <div className="site-container max-w-3xl text-center">
-        <h2 className="sr-only">{GUARANTEE}</h2>
-        <p className="text-lg leading-8 text-charcoal md:text-xl">{GUARANTEE}</p>
-        <Link href="#book" className="button-secondary mt-8">
-          {CTA_TEXT}
-        </Link>
+    <section className="bg-cream py-8 md:py-10">
+      <div className="site-container">
+        <Reveal className="mx-auto max-w-4xl text-center">
+          <h2 className="font-serif text-3xl leading-tight text-dark-olive md:text-4xl">{GUARANTEE}</h2>
+        </Reveal>
       </div>
     </section>
   );
