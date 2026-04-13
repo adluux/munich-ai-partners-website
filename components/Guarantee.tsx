@@ -1,13 +1,19 @@
-import { Reveal } from "@/components/Reveal";
-import { GUARANTEE } from "@/lib/content";
+import FadeInWrapper from "@/components/FadeInWrapper";
+import { CONTENT } from "@/lib/content";
 
-export function Guarantee() {
+interface GuaranteeProps {
+  children?: never;
+}
+
+export default function Guarantee({}: GuaranteeProps) {
   return (
-    <section className="bg-cream py-8 md:py-10">
-      <div className="site-container">
-        <Reveal className="mx-auto max-w-4xl text-center">
-          <h2 className="font-serif text-3xl leading-tight text-dark-olive md:text-4xl">{GUARANTEE}</h2>
-        </Reveal>
+    <section className="bg-card px-section-px py-[60px] md:py-section-py">
+      <div className="mx-auto max-w-container-max">
+        <FadeInWrapper className="mx-auto max-w-[700px] text-center">
+          <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
+            {CONTENT.guarantee.text}
+          </h2>
+        </FadeInWrapper>
       </div>
     </section>
   );

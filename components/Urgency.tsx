@@ -1,13 +1,22 @@
-import { Reveal } from "@/components/Reveal";
-import { URGENCY } from "@/lib/content";
+import FadeInWrapper from "@/components/FadeInWrapper";
+import { CONTENT } from "@/lib/content";
 
-export function Urgency() {
+interface UrgencyProps {
+  children?: never;
+}
+
+export default function Urgency({}: UrgencyProps) {
   return (
-    <section className="section-spacing bg-cream">
-      <div className="site-container">
-        <Reveal className="mx-auto max-w-4xl text-center">
-          <p className="font-serif text-4xl leading-tight text-dark-olive md:text-5xl">{URGENCY}</p>
-        </Reveal>
+    <section
+      id="about"
+      className="scroll-mt-navbar bg-background px-section-px py-[60px] md:py-section-py"
+    >
+      <div className="mx-auto max-w-container-max">
+        <FadeInWrapper className="mx-auto max-w-[700px] text-center">
+          <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
+            {CONTENT.urgency.text}
+          </h2>
+        </FadeInWrapper>
       </div>
     </section>
   );

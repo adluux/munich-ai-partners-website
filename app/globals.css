@@ -2,77 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: light;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
-body {
-  min-height: 100vh;
-}
-
-@layer base {
-  * {
-    @apply border-border;
+@keyframes fade-in-section {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
 
-  body {
-    @apply bg-cream text-charcoal;
-  }
-
-  a,
-  button {
-    @apply transition-colors duration-200;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@layer components {
-  .site-container {
-    @apply mx-auto w-full max-w-6xl px-6;
-  }
-
-  .section-spacing {
-    @apply py-20 md:py-24 lg:py-28;
-  }
-
-  .section-anchor {
-    scroll-margin-top: 6rem;
-  }
-
-  .section-tag {
-    @apply inline-flex items-center rounded-full border border-border bg-off-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-olive;
-  }
-
-  .button-primary {
-    @apply inline-flex items-center justify-center rounded-lg bg-cta-green px-6 py-3 text-sm font-semibold text-white shadow-sm hover:-translate-y-0.5 hover:bg-dark-olive focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cta-green;
-  }
-
-  .button-secondary {
-    @apply inline-flex items-center justify-center rounded-lg border border-dark-olive/20 bg-transparent px-6 py-3 text-sm font-semibold text-dark-olive hover:-translate-y-0.5 hover:border-dark-olive hover:bg-off-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dark-olive;
-  }
-
-  .button-ghost-light {
-    @apply inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
-  }
-
-  .surface-card {
-    @apply rounded-3xl border border-border bg-off-white shadow-[0_10px_30px_rgba(61,61,46,0.04)];
-  }
-
-  .fade-in {
-    @apply translate-y-6 opacity-0 transition-all duration-700 ease-out;
-  }
-
-  .fade-in-visible {
-    @apply translate-y-0 opacity-100;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .animate-fade-in-section {
+    animation: fade-in-section 0.6s ease-out both;
   }
 }

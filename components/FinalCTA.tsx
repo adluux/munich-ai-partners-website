@@ -1,35 +1,34 @@
 import Link from "next/link";
-import { Reveal } from "@/components/Reveal";
-import {
-  FINAL_CTA_BUTTON,
-  FINAL_CTA_HEADING,
-  FINAL_CTA_TAG,
-  FINAL_CTA_TRUST_SIGNALS,
-} from "@/lib/content";
+import FadeInWrapper from "@/components/FadeInWrapper";
+import SectionBadge from "@/components/SectionBadge";
+import { CONTENT } from "@/lib/content";
 
-export function FinalCTA() {
+interface FinalCTAProps {
+  children?: never;
+}
+
+export default function FinalCTA({}: FinalCTAProps) {
   return (
-    <section id="book" className="section-anchor section-spacing bg-dark-olive text-cream">
-      <div className="site-container">
-        <Reveal className="mx-auto max-w-4xl text-center">
-          <span className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-cream">
-            {FINAL_CTA_TAG}
-          </span>
-          <h2 className="mt-6 font-serif text-4xl text-cream md:text-6xl">{FINAL_CTA_HEADING}</h2>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 text-sm text-cream/80 md:flex-row md:flex-wrap">
-            {FINAL_CTA_TRUST_SIGNALS.map((signal) => (
-              <span
-                key={signal}
-                className="rounded-full border border-white/10 bg-white/5 px-4 py-2"
-              >
-                {signal}
-              </span>
-            ))}
-          </div>
-          <Link href="#book" className="button-primary mt-10 px-8 py-4 text-base">
-            {FINAL_CTA_BUTTON}
+    <section
+      id="book"
+      className="scroll-mt-navbar bg-primary px-section-px py-[60px] md:py-section-py"
+    >
+      <div className="mx-auto max-w-container-max">
+        <FadeInWrapper className="mx-auto flex max-w-[800px] flex-col items-center gap-gap-md text-center">
+          <SectionBadge label={CONTENT.finalCta.badge} variant="dark" />
+          <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-white md:text-[40px]">
+            {CONTENT.finalCta.heading}
+          </h2>
+          <p className="font-sans text-base font-normal leading-[1.5] text-white">
+            {CONTENT.finalCta.subheading}
+          </p>
+          <Link
+            href="#book"
+            className="inline-flex items-center justify-center rounded-button bg-cta px-8 py-4 font-sans text-base font-semibold leading-[1.3] text-white transition duration-200 ease-in hover:scale-[1.02] hover:shadow-button active:scale-[1.02]"
+          >
+            {CONTENT.finalCta.buttonLabel}
           </Link>
-        </Reveal>
+        </FadeInWrapper>
       </div>
     </section>
   );
