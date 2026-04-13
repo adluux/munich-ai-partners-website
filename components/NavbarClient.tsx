@@ -13,6 +13,8 @@ interface NavbarClientProps {
   links: NavLink[];
 }
 
+const MOBILE_MENU_ID = "mobile-navigation-overlay";
+
 export default function NavbarClient({
   ctaHref,
   ctaLabel,
@@ -94,7 +96,7 @@ export default function NavbarClient({
     <>
       <div
         className={clsx(
-          "flex h-navbar items-center justify-between gap-gap-sm px-section-px transition-shadow duration-300 ease-in-out",
+          "flex h-navbar items-center justify-end gap-2 md:justify-between md:gap-gap-sm md:px-section-px transition-shadow duration-300 ease-in-out",
           hasShadow && "shadow-nav",
         )}
       >
@@ -129,6 +131,7 @@ export default function NavbarClient({
 
           <button
             type="button"
+            aria-controls={MOBILE_MENU_ID}
             aria-expanded={isMenuOpen}
             aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             onClick={handleMenuToggle}
@@ -141,6 +144,7 @@ export default function NavbarClient({
 
       {isMenuOpen ? (
         <div
+          id={MOBILE_MENU_ID}
           ref={overlayRef}
           className="fixed inset-0 top-navbar z-40 flex flex-col bg-background px-section-px py-8 md:hidden"
         >
@@ -154,7 +158,7 @@ export default function NavbarClient({
                   href={link.href}
                   onClick={handleMenuClose}
                   className={clsx(
-                    "rounded-card border border-border-light px-5 py-4 font-sans text-xl font-medium leading-[1.4] text-primary",
+                    "rounded-card border border-border-light bg-card px-5 py-4 font-sans text-xl font-medium leading-[1.4] text-primary",
                     isActive && "bg-card",
                   )}
                 >
