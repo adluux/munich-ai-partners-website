@@ -3,35 +3,33 @@
 import { clsx } from "clsx";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import type { NavLink } from "@/lib/content";
+import { useEffect, useMemo, useRef, useState } from "react";
 import useScrollSpy from "@/hooks/useScrollSpy";
 
-interface NavbarClientProps {
-  ctaHref: string;
-  ctaLabel: string;
-  links: NavLink[];
+interface NavLinkItem {
+  label: string;
+  href: string;
+  id: string;
 }
 
-const MOBILE_MENU_ID = "mobile-navigation-overlay";
+interface NavbarClientProps {
+  links: readonly NavLinkItem[];
+  ctaLabel: string;
+}
 
 export default function NavbarClient({
-  ctaHref,
-  ctaLabel,
   links,
+  ctaLabel,
 }: NavbarClientProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasShadow, setHasShadow] = useState(false);
+  const sectionIds = useMemo(() => links.map((link) => link.id), [links]);
+  const activeId = useScrollSpy({ sectionIds });
   const overlayRef = useRef<HTMLDivElement>(null);
-  const activeId = useScrollSpy({
-    sectionIds: links.map((link) => link.href.replace("#", "")),
-  });
 
   useEffect(() => {
     const handleScroll = () => {
-      const heroSection = document.getElementById("hero");
-      const heroBottom = heroSection?.getBoundingClientRect().bottom ?? 0;
-      setHasShadow(heroBottom <= 72);
+      setHasShadow(window.scrollY > 12);
     };
 
     handleScroll();
@@ -43,17 +41,29 @@ export default function NavbarClient({
   }, []);
 
   useEffect(() => {
-    if (!isMenuOpen) {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+
+    return () => {
       document.body.style.overflow = "";
-      return;
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return undefined;
     }
 
-    document.body.style.overflow = "hidden";
-    const focusableElements = overlayRef.current?.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled])',
+    const node = overlayRef.current;
+
+    if (!node) {
+      return undefined;
+    }
+
+    const focusableElements = Array.from(
+      node.querySelectorAll<HTMLElement>('a, button, [tabindex]:not([tabindex="-1"])'),
     );
-    const firstElement = focusableElements?.[0];
-    const lastElement = focusableElements?.[focusableElements.length - 1];
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
 
     firstElement?.focus();
 
@@ -70,22 +80,23 @@ export default function NavbarClient({
       if (event.shiftKey && document.activeElement === firstElement) {
         event.preventDefault();
         lastElement.focus();
-      } else if (!event.shiftKey && document.activeElement === lastElement) {
+      }
+
+      if (!event.shiftKey && document.activeElement === lastElement) {
         event.preventDefault();
         firstElement.focus();
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.body.style.overflow = "";
-      document.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isMenuOpen]);
 
   const handleMenuToggle = () => {
-    setIsMenuOpen((previousState) => !previousState);
+    setIsMenuOpen((previousValue) => !previousValue);
   };
 
   const handleMenuClose = () => {
@@ -94,89 +105,68 @@ export default function NavbarClient({
 
   return (
     <>
-      <div
-        className={clsx(
-          "flex h-navbar items-center justify-end gap-2 md:justify-between md:gap-gap-sm md:px-section-px transition-shadow duration-300 ease-in-out",
-          hasShadow && "shadow-nav",
-        )}
-      >
-        <div className="hidden items-center gap-gap-md md:flex">
-          {links.map((link) => {
-            const isActive = activeId === link.href.replace("#", "");
-
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={isActive ? "page" : undefined}
-                className={clsx(
-                  "font-sans text-base font-normal leading-[1.5] text-text transition-colors duration-200 hover:text-primary",
-                  isActive && "text-primary",
-                  !isActive && "text-text-secondary",
-                )}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
+      <div className="ml-auto flex items-center gap-2 md:gap-3">
+        <div
+          className={clsx(
+            "hidden items-center gap-8 md:flex",
+            hasShadow && "rounded-lg bg-background/80 px-3 py-2 backdrop-blur",
+          )}
+        >
+          {links.map((link) => (
+            <Link
+              key={link.id}
+              href={link.href}
+              className={clsx(
+                "font-sans text-[16px] font-normal leading-[1.5] text-text-secondary transition-colors hover:text-text",
+                activeId === link.id && "text-text",
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
-
-        <div className="ml-auto flex items-center gap-3">
+        <Link
+          href="#book"
+          className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-3 font-sans text-[16px] font-semibold leading-[1.3] text-white transition duration-300 hover:scale-[1.02] hover:shadow-lg"
+        >
+          {ctaLabel}
+        </Link>
+        <button
+          type="button"
+          onClick={handleMenuToggle}
+          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border-light bg-card text-text transition duration-300 hover:scale-[1.02] md:hidden"
+        >
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+      {isMenuOpen && (
+        <div
+          id="mobile-navigation"
+          ref={overlayRef}
+          className="fixed inset-0 top-navbar z-40 flex flex-col gap-4 overflow-y-auto border-t border-border-light bg-background px-6 py-6 md:hidden"
+        >
+          {links.map((link) => (
+            <Link
+              key={link.id}
+              href={link.href}
+              onClick={handleMenuClose}
+              className="rounded-lg border border-border-light bg-card px-5 py-4 font-sans text-[16px] font-medium leading-[1.4] text-text shadow-soft transition duration-300 hover:scale-[1.02]"
+            >
+              {link.label}
+            </Link>
+          ))}
           <Link
-            href={ctaHref}
-            className="inline-flex items-center justify-center rounded-button bg-primary px-5 py-3 font-sans text-base font-semibold leading-[1.3] text-white transition duration-200 ease-in hover:scale-[1.02] hover:shadow-button active:scale-[1.02]"
+            href="#book"
+            onClick={handleMenuClose}
+            className="inline-flex items-center justify-center rounded-lg bg-cta px-5 py-4 font-sans text-[16px] font-semibold leading-[1.3] text-white transition duration-300 hover:scale-[1.02] hover:shadow-lg"
           >
             {ctaLabel}
           </Link>
-
-          <button
-            type="button"
-            aria-controls={MOBILE_MENU_ID}
-            aria-expanded={isMenuOpen}
-            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            onClick={handleMenuToggle}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-button border border-border-light bg-card text-primary md:hidden"
-          >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
         </div>
-      </div>
-
-      {isMenuOpen ? (
-        <div
-          id={MOBILE_MENU_ID}
-          ref={overlayRef}
-          className="fixed inset-0 top-navbar z-40 flex flex-col bg-background px-section-px py-8 md:hidden"
-        >
-          <nav className="flex flex-1 flex-col gap-4" aria-label="Mobile navigation">
-            {links.map((link) => {
-              const isActive = activeId === link.href.replace("#", "");
-
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={handleMenuClose}
-                  className={clsx(
-                    "rounded-card border border-border-light bg-card px-5 py-4 font-sans text-xl font-medium leading-[1.4] text-primary",
-                    isActive && "bg-card",
-                  )}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-
-            <Link
-              href={ctaHref}
-              onClick={handleMenuClose}
-              className="inline-flex items-center justify-center rounded-button bg-primary px-5 py-4 font-sans text-base font-semibold leading-[1.3] text-white transition duration-200 ease-in hover:scale-[1.02] hover:shadow-button active:scale-[1.02]"
-            >
-              {ctaLabel}
-            </Link>
-          </nav>
-        </div>
-      ) : null}
+      )}
     </>
   );
 }

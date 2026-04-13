@@ -12,7 +12,7 @@ import Testimonials from "@/components/Testimonials";
 import Urgency from "@/components/Urgency";
 import WhoWeAre from "@/components/WhoWeAre";
 
-export default function Home() {
+export default function Page() {
   return (
     <main id="main-content">
       <Navbar />

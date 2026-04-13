@@ -1,30 +1,29 @@
+import { clsx } from "clsx";
 import Link from "next/link";
-import FadeInWrapper from "@/components/FadeInWrapper";
-import { CONTENT } from "@/lib/content";
+import FadeInWrapper from "./FadeInWrapper";
+import { content } from "@/lib/content";
 
 interface HowWeDoItProps {
-  children?: never;
+  className?: string;
 }
 
-export default function HowWeDoIt({}: HowWeDoItProps) {
+export default function HowWeDoIt({ className }: HowWeDoItProps) {
   return (
-    <section className="bg-primary px-section-px py-[60px] md:py-section-py">
-      <div className="mx-auto max-w-container-max">
-        <FadeInWrapper className="mx-auto flex max-w-[800px] flex-col items-center gap-gap-md text-center">
-          <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-white md:text-[40px]">
-            {CONTENT.howWeDoIt.heading}
-          </h2>
-          <p className="font-sans text-base font-normal leading-[1.5] text-white">
-            {CONTENT.howWeDoIt.body}
-          </p>
-          <Link
-            href="#"
-            className="font-sans text-base font-medium leading-[1.4] text-background underline-offset-4 transition-colors duration-200 hover:underline"
-          >
-            {CONTENT.howWeDoIt.linkLabel}
-          </Link>
-        </FadeInWrapper>
-      </div>
+    <section className={clsx("bg-primary px-6 py-[60px] lg:py-[100px]", className)}>
+      <FadeInWrapper className="mx-auto flex max-w-prose flex-col items-center gap-6 text-center">
+        <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-white md:text-[40px]">
+          {content.howWeDoIt.heading}
+        </h2>
+        <p className="font-sans text-[16px] font-normal leading-[1.5] text-white">
+          {content.howWeDoIt.body}
+        </p>
+        <Link
+          href="#"
+          className="font-sans text-[16px] font-medium leading-[1.4] text-white underline-offset-4 transition hover:underline"
+        >
+          {content.howWeDoIt.linkLabel}
+        </Link>
+      </FadeInWrapper>
     </section>
   );
 }

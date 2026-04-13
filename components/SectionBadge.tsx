@@ -2,7 +2,7 @@ import { clsx } from "clsx";
 
 interface SectionBadgeProps {
   label: string;
-  variant?: "dark" | "light";
+  variant?: "light" | "dark";
 }
 
 export default function SectionBadge({
@@ -12,9 +12,9 @@ export default function SectionBadge({
   return (
     <span
       className={clsx(
-        "inline-flex items-center rounded-full px-3 py-1 font-sans text-sm font-medium leading-[1.4]",
-        variant === "light" && "bg-accent/15 text-accent",
-        variant === "dark" && "bg-white/15 text-white",
+        "inline-flex items-center rounded-lg px-4 py-2 font-sans text-[16px] font-medium leading-[1.4]",
+        variant === "light" && "bg-accent/10 text-accent",
+        variant === "dark" && "border border-white/20 bg-white/10 text-white",
       )}
     >
       {label}

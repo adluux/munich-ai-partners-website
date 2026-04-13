@@ -5,6 +5,8 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./hooks/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -20,33 +22,22 @@ const config: Config = {
         white: "#FFFFFF",
       },
       fontFamily: {
-        heading: ["var(--font-playfair)", "serif"],
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        heading: ["var(--font-heading)", "serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       maxWidth: {
-        "container-max": "1200px",
+        container: "1200px",
+        prose: "800px",
+        narrow: "700px",
       },
       spacing: {
-        "section-px": "24px",
-        "section-py": "100px",
-        "card-p": "24px",
-        "gap-sm": "16px",
-        "gap-md": "32px",
-        "gap-lg": "80px",
         navbar: "72px",
       },
-      borderRadius: {
-        card: "8px",
-        button: "8px",
-      },
       boxShadow: {
-        nav: "0 10px 24px rgba(61, 61, 46, 0.08)",
-        button: "0 12px 24px rgba(74, 90, 58, 0.18)",
+        nav: "0 12px 30px rgba(45, 45, 45, 0.08)",
+        soft: "0 18px 45px rgba(61, 61, 46, 0.08)",
       },
       transitionDuration: {
-        200: "200ms",
-        300: "300ms",
-        400: "400ms",
         600: "600ms",
       },
     },

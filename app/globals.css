@@ -6,7 +6,27 @@ html {
   scroll-behavior: smooth;
 }
 
-@keyframes fade-in-section {
+body {
+  min-height: 100vh;
+}
+
+:focus-visible {
+  outline: 2px solid theme("colors.accent");
+  outline-offset: 3px;
+}
+
+.hero-surface {
+  background-color: theme("colors.primary");
+  background-image:
+    radial-gradient(circle at top, rgb(107 107 78 / 0.28), transparent 52%),
+    linear-gradient(180deg, rgb(61 61 46 / 0.9), rgb(61 61 46 / 1));
+}
+
+.fade-enter {
+  animation: fade-enter 0.7s ease-out both;
+}
+
+@keyframes fade-enter {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -19,18 +39,16 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-@layer utilities {
-  .animate-fade-in-section {
-    animation: fade-in-section 0.6s ease-out both;
+    scroll-behavior: auto !important;
   }
 }

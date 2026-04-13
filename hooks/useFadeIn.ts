@@ -4,8 +4,8 @@ import type { RefObject } from "react";
 import { useEffect, useRef, useState } from "react";
 
 interface UseFadeInResult {
-  isVisible: boolean;
   ref: RefObject<HTMLDivElement>;
+  isVisible: boolean;
 }
 
 export default function useFadeIn(): UseFadeInResult {
@@ -13,35 +13,27 @@ export default function useFadeIn(): UseFadeInResult {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     if (mediaQuery.matches) {
       setIsVisible(true);
-      return;
+      return undefined;
     }
 
     const node = ref.current;
 
     if (!node) {
-      return;
+      return undefined;
     }
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-
-        if (entry?.isIntersecting) {
+      ([entry]) => {
+        if (entry.isIntersecting) {
           setIsVisible(true);
           observer.disconnect();
         }
       },
-      {
-        threshold: 0.1,
-      },
+      { threshold: 0.1 },
     );
 
     observer.observe(node);
@@ -51,5 +43,5 @@ export default function useFadeIn(): UseFadeInResult {
     };
   }, []);
 
-  return { isVisible, ref };
+  return { ref, isVisible };
 }

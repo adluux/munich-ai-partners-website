@@ -3,51 +3,37 @@
 import { useEffect, useState } from "react";
 
 interface UseScrollSpyOptions {
-  offset?: number;
   sectionIds: string[];
+  offset?: number;
 }
 
 export default function useScrollSpy({
-  offset = 72,
   sectionIds,
+  offset = 72,
 }: UseScrollSpyOptions): string | null {
-  const [activeId, setActiveId] = useState<string | null>(sectionIds[0] ?? null);
+  const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
+    const handleScroll = () => {
+      const sections = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter((section): section is HTMLElement => section !== null);
 
-    const elements = sectionIds
-      .map((sectionId) => document.getElementById(sectionId))
-      .filter((element): element is HTMLElement => element !== null);
+      const currentSection =
+        sections.find((section) => {
+          const rect = section.getBoundingClientRect();
 
-    if (elements.length === 0) {
-      return;
-    }
+          return rect.top <= offset + 1 && rect.bottom > offset + 1;
+        }) ?? null;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((entryA, entryB) => entryB.intersectionRatio - entryA.intersectionRatio);
+      setActiveId(currentSection?.id ?? null);
+    };
 
-        const [topEntry] = visibleEntries;
-
-        if (topEntry?.target instanceof HTMLElement) {
-          setActiveId(topEntry.target.id);
-        }
-      },
-      {
-        rootMargin: `-${offset}px 0px -55% 0px`,
-        threshold: [0.15, 0.35, 0.6],
-      },
-    );
-
-    elements.forEach((element) => observer.observe(element));
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [offset, sectionIds]);
 

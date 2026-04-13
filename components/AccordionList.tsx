@@ -3,61 +3,58 @@
 import { clsx } from "clsx";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
-import type { KeyboardEvent } from "react";
-import type { ServiceItem } from "@/lib/content";
+
+interface AccordionItem {
+  id: string;
+  title: string;
+  description: string;
+}
 
 interface AccordionListProps {
-  items: ServiceItem[];
+  items: readonly AccordionItem[];
 }
 
 export default function AccordionList({ items }: AccordionListProps) {
   const [openId, setOpenId] = useState<string | null>(null);
 
   const handleToggle = (id: string) => {
-    setOpenId((currentId) => (currentId === id ? null : id));
-  };
-
-  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>, id: string) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      handleToggle(id);
-    }
+    setOpenId((previousValue) => (previousValue === id ? null : id));
   };
 
   return (
-    <div className="flex flex-col gap-gap-sm">
+    <div className="flex flex-col gap-4">
       {items.map((item) => {
         const isOpen = openId === item.id;
-        const buttonId = `service-button-${item.id}`;
-        const panelId = `service-panel-${item.id}`;
+        const buttonId = `accordion-button-${item.id}`;
+        const panelId = `accordion-panel-${item.id}`;
 
         return (
           <article
             key={item.id}
-            className="rounded-card border border-border-light bg-white"
+            className="rounded-lg border border-border-light bg-white p-6 shadow-soft"
           >
             <button
               id={buttonId}
               type="button"
-              aria-controls={panelId}
-              aria-expanded={isOpen}
               onClick={() => handleToggle(item.id)}
-              onKeyDown={(event) => handleKeyDown(event, item.id)}
-              className="flex w-full items-start justify-between gap-gap-sm p-card-p text-left"
+              aria-expanded={isOpen}
+              aria-controls={panelId}
+              className="flex w-full items-start gap-4 text-left"
             >
-              <div className="flex min-w-0 flex-1 gap-gap-sm">
-                <span className="w-10 shrink-0 font-sans text-base font-medium leading-[1.4] text-accent md:text-[20px]">
-                  {item.id}
+              <span className="font-sans text-[16px] font-medium leading-[1.4] text-accent md:text-[20px]">
+                {item.id}
+              </span>
+              <span className="flex min-w-0 flex-1 flex-col gap-2">
+                <span className="font-sans text-[16px] font-medium leading-[1.4] text-primary md:text-[20px]">
+                  {item.title}
                 </span>
-                <div className="min-w-0">
-                  <h3 className="font-sans text-base font-medium leading-[1.4] text-primary md:text-[20px]">
-                    {item.title}
-                  </h3>
-                </div>
-              </div>
+                <span className="font-sans text-[16px] font-normal leading-[1.5] text-text-secondary">
+                  {item.description}
+                </span>
+              </span>
               <ChevronDown
                 className={clsx(
-                  "mt-1 h-5 w-5 shrink-0 text-primary transition-transform duration-400 ease-in-out",
+                  "mt-1 h-5 w-5 shrink-0 text-primary transition-transform duration-300",
                   isOpen && "rotate-180",
                 )}
               />
@@ -67,16 +64,13 @@ export default function AccordionList({ items }: AccordionListProps) {
               role="region"
               aria-labelledby={buttonId}
               className={clsx(
-                "grid transition-all duration-400 ease-in-out",
-                isOpen && "grid-rows-[1fr] opacity-100",
-                !isOpen && "grid-rows-[0fr] opacity-0",
+                "overflow-hidden transition-all duration-300",
+                isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0",
               )}
             >
-              <div className="overflow-hidden">
-                <p className="px-card-p pb-card-p font-sans text-base font-normal leading-[1.5] text-text-secondary">
-                  {item.description}
-                </p>
-              </div>
+              <p className="pt-4 font-sans text-[16px] font-normal leading-[1.5] text-text">
+                {item.description}
+              </p>
             </div>
           </article>
         );

@@ -1,32 +1,42 @@
-import FadeInWrapper from "@/components/FadeInWrapper";
-import MetricCard from "@/components/MetricCard";
-import SectionBadge from "@/components/SectionBadge";
-import { CONTENT } from "@/lib/content";
+import { clsx } from "clsx";
+import FadeInWrapper from "./FadeInWrapper";
+import MetricCard from "./MetricCard";
+import SectionBadge from "./SectionBadge";
+import { content } from "@/lib/content";
 
 interface TestimonialsProps {
-  children?: never;
+  className?: string;
 }
 
-export default function Testimonials({}: TestimonialsProps) {
+export default function Testimonials({ className }: TestimonialsProps) {
   return (
     <section
       id="testimonials"
-      className="scroll-mt-navbar bg-background px-section-px py-[60px] md:py-section-py"
+      className={clsx(
+        "scroll-mt-navbar bg-background px-6 py-[60px] lg:py-[100px]",
+        className,
+      )}
     >
-      <div className="mx-auto max-w-container-max">
-        <FadeInWrapper className="flex flex-col gap-gap-md">
-          <SectionBadge label={CONTENT.testimonials.badge} />
-          <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
-            {CONTENT.testimonials.heading}
+      <div className="mx-auto max-w-container">
+        <FadeInWrapper className="flex flex-col gap-4">
+          <SectionBadge label={content.testimonials.tag} />
+          <h2 className="max-w-prose font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
+            {content.testimonials.heading}
           </h2>
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-gap-lg">
-            {CONTENT.testimonials.items.map((item) => (
-              <FadeInWrapper key={item.title}>
-                <MetricCard item={item} />
-              </FadeInWrapper>
-            ))}
-          </div>
         </FadeInWrapper>
+        <div className="mt-8 grid gap-8 lg:mt-12 lg:grid-cols-3 lg:gap-20">
+          {content.testimonials.cards.map((card) => (
+            <FadeInWrapper key={card.id}>
+              <MetricCard
+                target={card.target}
+                suffix={card.suffix}
+                title={card.title}
+                description={card.description}
+                badge={card.badge}
+              />
+            </FadeInWrapper>
+          ))}
+        </div>
       </div>
     </section>
   );

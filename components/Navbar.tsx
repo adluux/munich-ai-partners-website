@@ -1,27 +1,44 @@
-import NavbarClient from "@/components/NavbarClient";
-import { CONTENT } from "@/lib/content";
+import { clsx } from "clsx";
+import { content } from "@/lib/content";
+import NavbarClient from "./NavbarClient";
 
 interface NavbarProps {
-  children?: never;
+  className?: string;
 }
 
-export default function Navbar({}: NavbarProps) {
+export default function Navbar({ className }: NavbarProps) {
   return (
-    <nav className="sticky top-0 z-50 border-b border-border-light bg-background/95 backdrop-blur">
-      <div className="mx-auto flex max-w-container-max items-center justify-between gap-3 px-4 md:gap-gap-md md:px-section-px">
-        <div className="min-w-0">
-          <span className="font-heading text-2xl font-bold leading-[1.2] text-primary md:text-3xl">
-            {CONTENT.navbar.brand}
-          </span>
-        </div>
-        <div className="min-w-0 flex-1">
-          <NavbarClient
-            ctaHref="#book"
-            ctaLabel={CONTENT.navbar.ctaLabel}
-            links={CONTENT.navbar.links}
-          />
-        </div>
+    <nav
+      className={clsx(
+        "sticky top-0 z-50 border-b border-border-light bg-background/95 backdrop-blur",
+        className,
+      )}
+    >
+      <div className="mx-auto flex max-w-container items-center justify-between gap-3 px-4 py-4 sm:px-6">
+        <LinkBrand />
+        <NavbarClient
+          links={content.navigation.links}
+          ctaLabel={content.navigation.ctaLabel}
+        />
       </div>
     </nav>
+  );
+}
+
+interface LinkBrandProps {
+  className?: string;
+}
+
+function LinkBrand({ className }: LinkBrandProps) {
+  return (
+    <a
+      href="#main-content"
+      className={clsx(
+        "min-w-0 font-sans text-[13px] font-semibold uppercase tracking-[0.24em] text-primary sm:text-[15px]",
+        className,
+      )}
+    >
+      {content.brand.name}
+    </a>
   );
 }

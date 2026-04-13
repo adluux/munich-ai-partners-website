@@ -1,26 +1,26 @@
-import { CONTENT } from "@/lib/content";
+import { clsx } from "clsx";
+import { content } from "@/lib/content";
 
 interface FooterProps {
-  children?: never;
+  className?: string;
 }
 
-export default function Footer({}: FooterProps) {
+export default function Footer({ className }: FooterProps) {
   return (
-    <footer className="bg-primary px-section-px py-8">
-      <div className="mx-auto flex max-w-container-max flex-col items-center gap-gap-sm text-center md:flex-row md:items-start md:justify-between md:text-left">
-        <div className="font-sans text-sm font-normal leading-[1.4] text-white">
-          <p>{CONTENT.navbar.brand}</p>
-          <p>{CONTENT.footer.tagline}</p>
+    <footer className={clsx("bg-primary px-6 py-8", className)}>
+      <div className="mx-auto flex max-w-container flex-col gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
+        <div className="font-sans text-[14px] font-normal leading-[1.4] text-white">
+          {content.brand.name} | {content.brand.tagline}
         </div>
-        <div className="font-sans text-sm font-normal leading-[1.4] text-white">
-          <a href={`mailto:${CONTENT.footer.email}`} className="hover:underline">
-            {CONTENT.footer.email}
-          </a>
-          <p>{CONTENT.footer.location}</p>
+        <div className="font-sans text-[14px] font-normal leading-[1.4] text-white">
+          <a href={`mailto:${content.brand.email}`} className="hover:underline">
+            {content.brand.email}
+          </a>{" "}
+          | {content.brand.location}
         </div>
-        <p className="font-sans text-sm font-normal leading-[1.4] text-white">
-          {CONTENT.footer.copyright}
-        </p>
+        <div className="font-sans text-[14px] font-normal leading-[1.4] text-white">
+          {content.brand.copyright}
+        </div>
       </div>
     </footer>
   );

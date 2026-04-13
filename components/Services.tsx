@@ -1,26 +1,32 @@
-import AccordionList from "@/components/AccordionList";
-import FadeInWrapper from "@/components/FadeInWrapper";
-import SectionBadge from "@/components/SectionBadge";
-import { CONTENT } from "@/lib/content";
+import { clsx } from "clsx";
+import AccordionList from "./AccordionList";
+import FadeInWrapper from "./FadeInWrapper";
+import SectionBadge from "./SectionBadge";
+import { content } from "@/lib/content";
 
 interface ServicesProps {
-  children?: never;
+  className?: string;
 }
 
-export default function Services({}: ServicesProps) {
+export default function Services({ className }: ServicesProps) {
   return (
     <section
       id="services"
-      className="scroll-mt-navbar bg-card px-section-px py-[60px] md:py-section-py"
+      className={clsx(
+        "scroll-mt-navbar bg-card px-6 py-[60px] lg:py-[100px]",
+        className,
+      )}
     >
-      <div className="mx-auto max-w-container-max">
-        <FadeInWrapper className="flex flex-col gap-gap-md">
-          <SectionBadge label={CONTENT.services.badge} />
+      <div className="mx-auto max-w-container">
+        <FadeInWrapper className="flex flex-col gap-4">
+          <SectionBadge label={content.services.tag} />
           <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
-            {CONTENT.services.heading}
+            {content.services.heading}
           </h2>
-          <AccordionList items={CONTENT.services.items} />
         </FadeInWrapper>
+        <div className="mt-8 lg:mt-12">
+          <AccordionList items={content.services.items} />
+        </div>
       </div>
     </section>
   );

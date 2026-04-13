@@ -1,22 +1,21 @@
-import FadeInWrapper from "@/components/FadeInWrapper";
-import SectionBadge from "@/components/SectionBadge";
-import { CONTENT } from "@/lib/content";
+import { clsx } from "clsx";
+import FadeInWrapper from "./FadeInWrapper";
+import SectionBadge from "./SectionBadge";
+import { content } from "@/lib/content";
 
 interface HowWeWorkProps {
-  children?: never;
+  className?: string;
 }
 
-export default function HowWeWork({}: HowWeWorkProps) {
+export default function HowWeWork({ className }: HowWeWorkProps) {
   return (
-    <section className="bg-card px-section-px py-[60px] md:py-section-py">
-      <div className="mx-auto max-w-container-max">
-        <FadeInWrapper className="mx-auto flex max-w-[800px] flex-col items-center gap-gap-md text-center">
-          <SectionBadge label={CONTENT.howWeWork.badge} />
-          <p className="font-sans text-base font-normal leading-[1.5] text-text">
-            {CONTENT.howWeWork.body}
-          </p>
-        </FadeInWrapper>
-      </div>
+    <section className={clsx("bg-card px-6 py-[60px] lg:py-[100px]", className)}>
+      <FadeInWrapper className="mx-auto flex max-w-narrow flex-col items-center gap-4 text-center">
+        <SectionBadge label={content.howWeWork.tag} />
+        <p className="font-sans text-[16px] font-normal leading-[1.5] text-text">
+          {content.howWeWork.body}
+        </p>
+      </FadeInWrapper>
     </section>
   );
 }

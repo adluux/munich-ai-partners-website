@@ -4,83 +4,74 @@ import type { RefObject } from "react";
 import { useEffect, useRef, useState } from "react";
 
 interface UseCountUpOptions {
+  target: number;
   duration?: number;
   suffix?: string;
-  target: number;
 }
 
 interface UseCountUpResult {
+  ref: RefObject<HTMLDivElement>;
   displayValue: string;
-  ref: RefObject<HTMLSpanElement>;
 }
 
 export default function useCountUp({
+  target,
   duration = 1000,
   suffix = "",
-  target,
 }: UseCountUpOptions): UseCountUpResult {
-  const ref = useRef<HTMLSpanElement>(null);
-  const [displayValue, setDisplayValue] = useState(`0${suffix}`);
+  const ref = useRef<HTMLDivElement>(null);
+  const [displayValue, setDisplayValue] = useState("0");
 
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     if (mediaQuery.matches) {
       setDisplayValue(`${target}${suffix}`);
-      return;
+      return undefined;
     }
 
     const node = ref.current;
 
     if (!node) {
-      return;
+      return undefined;
     }
 
-    let animationFrame = 0;
-    let started = false;
+    let frameId = 0;
+    let hasStarted = false;
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-
-        if (!entry?.isIntersecting || started) {
+      ([entry]) => {
+        if (!entry.isIntersecting || hasStarted) {
           return;
         }
 
-        started = true;
+        hasStarted = true;
         const startTime = performance.now();
 
         const tick = (timestamp: number) => {
-          const elapsed = timestamp - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const currentValue = Math.round(progress * target);
+          const progress = Math.min((timestamp - startTime) / duration, 1);
+          const currentValue = Math.round(target * progress);
 
           setDisplayValue(`${currentValue}${suffix}`);
 
           if (progress < 1) {
-            animationFrame = window.requestAnimationFrame(tick);
+            frameId = window.requestAnimationFrame(tick);
           }
         };
 
-        animationFrame = window.requestAnimationFrame(tick);
+        frameId = window.requestAnimationFrame(tick);
         observer.disconnect();
       },
-      {
-        threshold: 0.2,
-      },
+      { threshold: 0.1 },
     );
 
     observer.observe(node);
 
     return () => {
       observer.disconnect();
-      window.cancelAnimationFrame(animationFrame);
+      window.cancelAnimationFrame(frameId);
     };
   }, [duration, suffix, target]);
 
-  return { displayValue, ref };
+  return { ref, displayValue };
 }

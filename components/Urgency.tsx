@@ -1,23 +1,25 @@
-import FadeInWrapper from "@/components/FadeInWrapper";
-import { CONTENT } from "@/lib/content";
+import { clsx } from "clsx";
+import FadeInWrapper from "./FadeInWrapper";
+import { content } from "@/lib/content";
 
 interface UrgencyProps {
-  children?: never;
+  className?: string;
 }
 
-export default function Urgency({}: UrgencyProps) {
+export default function Urgency({ className }: UrgencyProps) {
   return (
     <section
       id="about"
-      className="scroll-mt-navbar bg-background px-section-px py-[60px] md:py-section-py"
+      className={clsx(
+        "scroll-mt-navbar bg-background px-6 py-[60px] lg:py-[100px]",
+        className,
+      )}
     >
-      <div className="mx-auto max-w-container-max">
-        <FadeInWrapper className="mx-auto max-w-[700px] text-center">
-          <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
-            {CONTENT.urgency.text}
-          </h2>
-        </FadeInWrapper>
-      </div>
+      <FadeInWrapper className="mx-auto max-w-narrow text-center">
+        <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
+          {content.urgency.copy}
+        </h2>
+      </FadeInWrapper>
     </section>
   );
 }

@@ -1,20 +1,19 @@
-import FadeInWrapper from "@/components/FadeInWrapper";
-import { CONTENT } from "@/lib/content";
+import { clsx } from "clsx";
+import FadeInWrapper from "./FadeInWrapper";
+import { content } from "@/lib/content";
 
 interface GuaranteeProps {
-  children?: never;
+  className?: string;
 }
 
-export default function Guarantee({}: GuaranteeProps) {
+export default function Guarantee({ className }: GuaranteeProps) {
   return (
-    <section className="bg-card px-section-px py-[60px] md:py-section-py">
-      <div className="mx-auto max-w-container-max">
-        <FadeInWrapper className="mx-auto max-w-[700px] text-center">
-          <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
-            {CONTENT.guarantee.text}
-          </h2>
-        </FadeInWrapper>
-      </div>
+    <section className={clsx("bg-card px-6 py-[60px] lg:py-[100px]", className)}>
+      <FadeInWrapper className="mx-auto max-w-narrow text-center">
+        <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
+          {content.guarantee.copy}
+        </h2>
+      </FadeInWrapper>
     </section>
   );
 }
