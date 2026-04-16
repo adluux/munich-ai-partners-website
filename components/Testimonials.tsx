@@ -13,12 +13,12 @@ export default function Testimonials({ className }: TestimonialsProps) {
     <section
       id="testimonials"
       className={clsx(
-        "scroll-mt-navbar bg-background px-6 py-[60px] lg:py-[100px]",
+        "scroll-mt-navbar bg-background px-6 pb-[60px] pt-8 lg:pb-[100px] lg:pt-10",
         className,
       )}
     >
       <div className="mx-auto max-w-container">
-        <FadeInWrapper className="flex flex-col gap-4">
+        <FadeInWrapper className="flex flex-col gap-3">
           <SectionBadge label={content.testimonials.tag} />
           <h2 className="max-w-prose font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
             {content.testimonials.heading}

@@ -12,7 +12,7 @@ export default function SectionBadge({
   return (
     <span
       className={clsx(
-        "inline-block rounded-full px-3 py-1 font-sans text-[14px] font-medium leading-[1.4]",
+        "inline-block w-fit self-start rounded-full px-3 py-1 font-sans text-[14px] font-medium leading-[1.4]",
         variant === "light" && "bg-accent/10 text-accent",
         variant === "dark" && "border border-white/20 bg-white/10 text-white",
       )}
