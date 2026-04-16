@@ -18,7 +18,7 @@ export default function FinalCTA({ className }: FinalCTAProps) {
       )}
     >
       <FadeInWrapper className="mx-auto flex max-w-narrow flex-col items-center gap-6 text-center">
-        <SectionBadge label={content.finalCta.tag} variant="dark" />
+        <SectionBadge label={content.finalCta.tag} variant="dark" align="center" />
         <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-white md:text-[40px]">
           {content.finalCta.heading}
         </h2>
