@@ -22,11 +22,11 @@ export default function Page() {
       <MidCTA />
       <HowWeWork />
       <Services />
+      <LeadMagnet />
       <HowWeDoIt />
       <WhoWeAre />
       <Urgency />
       <FinalCTA />
-      <LeadMagnet />
       <Footer />
     </main>
   );

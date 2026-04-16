@@ -7,6 +7,22 @@ interface WhoWeAreProps {
   className?: string;
 }
 
+interface LinkedInMarkProps {
+  className?: string;
+}
+
+function LinkedInMark({ className }: LinkedInMarkProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={clsx("h-[18px] w-[18px] fill-current", className)}
+    >
+      <path d="M4.98 3.5A2.49 2.49 0 1 1 5 8.48a2.49 2.49 0 0 1-.02-4.98ZM3 9h4v12H3V9Zm7 0h3.83v1.64h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.66 4.8 6.12V21h-4v-5.6c0-1.33-.03-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95V21h-4V9Z" />
+    </svg>
+  );
+}
+
 export default function WhoWeAre({ className }: WhoWeAreProps) {
   return (
     <section
@@ -24,6 +40,30 @@ export default function WhoWeAre({ className }: WhoWeAreProps) {
         <p className="font-sans text-[16px] font-normal leading-[1.5] text-text">
           {content.team.body}
         </p>
+        <div className="mx-auto mt-12 flex aspect-video max-w-[700px] items-center justify-center rounded-lg bg-card">
+          <span className="font-sans text-[16px] font-normal leading-[1.5] text-text-secondary">
+            {content.team.photoLabel}
+          </span>
+        </div>
+        <div className="mx-auto mt-8 grid max-w-[700px] grid-cols-1 gap-8 md:grid-cols-2">
+          {content.team.partners.map((partner) => (
+            <div key={partner.name} className="flex flex-col items-center gap-3 text-center">
+              <h3 className="font-heading text-[28px] font-bold leading-[1.3] text-primary">
+                {partner.name}
+              </h3>
+              <p className="font-sans text-[16px] font-normal leading-[1.5] text-text-secondary">
+                {partner.title}
+              </p>
+              <a
+                href={partner.linkedinUrl}
+                className="inline-flex items-center gap-2 font-sans text-[16px] font-medium leading-[1.4] text-primary transition hover:underline"
+              >
+                <LinkedInMark />
+                {partner.linkedinLabel}
+              </a>
+            </div>
+          ))}
+        </div>
       </FadeInWrapper>
     </section>
   );

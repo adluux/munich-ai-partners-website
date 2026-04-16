@@ -10,11 +10,8 @@ interface HeroProps {
 export default function Hero({ className }: HeroProps) {
   return (
     <section className={clsx("hero-surface px-6 py-[60px] lg:py-[100px]", className)}>
-      <FadeInWrapper className="mx-auto flex min-h-[65vh] max-w-container items-center justify-center">
-        <div className="flex max-w-prose flex-col items-center gap-8 text-center">
-          <span className="inline-flex items-center rounded-lg bg-accent px-4 py-2 font-sans text-[16px] font-medium leading-[1.4] text-white">
-            {content.hero.badgeLabel}
-          </span>
+      <FadeInWrapper className="mx-auto flex min-h-[420px] max-w-container items-center py-4 md:min-h-[50vh]">
+        <div className="flex max-w-prose flex-col items-start gap-8 text-left">
           <div className="flex flex-col gap-4">
             <h1 className="font-heading text-[36px] font-bold leading-[1.2] text-white md:text-[60px]">
               {content.hero.headline}

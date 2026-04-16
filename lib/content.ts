@@ -16,7 +16,6 @@ export const content = {
     ctaLabel: "Book a Call",
   },
   hero: {
-    badgeLabel: "AI-first",
     headline: "Do you want better business results?",
     subheadline:
       "We help you achieve them, from strategy to execution, with an AI-first approach.",
@@ -32,7 +31,6 @@ export const content = {
         suffix: "x",
         title: "Placeholder",
         description: "Placeholder result.",
-        badge: "Delivered Results",
       },
       {
         id: "02",
@@ -40,7 +38,6 @@ export const content = {
         suffix: "x",
         title: "Placeholder",
         description: "Placeholder result.",
-        badge: "Delivered Results",
       },
       {
         id: "03",
@@ -48,13 +45,13 @@ export const content = {
         suffix: "x",
         title: "Placeholder",
         description: "Placeholder result.",
-        badge: "Delivered Results",
       },
     ],
   },
   guarantee: {
+    headline: "Our Commitment",
     copy:
-      "Every engagement includes clear success metrics. We only take on projects where we are confident we can deliver measurable impacts.",
+      "Every engagement starts with clear success metrics \u2014 agreed upfront. We only take on projects where we're confident we can deliver measurable results.",
   },
   midCta: {
     label: "Book a free consultation",
@@ -100,14 +97,29 @@ export const content = {
     ],
   },
   howWeDoIt: {
-    heading: "How We Do It, Differently",
+    heading: "Others sell slides. We stay for the outcome.",
     body: "Others sell slides and disappear when reality hits. We bring decades of hands-on industry experience and use AI to cut overhead and move faster, delivering better judgment, better work, and more value. We define success upfront, tailor every engagement to your business, and stay until the results show up in the numbers.",
     linkLabel: "See how we did it for Urban Point \u2192",
   },
   team: {
-    tag: "The Team",
-    heading: "Who You\u2019ll Be Working With",
-    body: "We\u2019re operators, not theorists. Ivan and Tracy bring 30+ years of experience leading product, strategy, and operations across companies of all sizes. We\u2019ve built, scaled, and optimized businesses\u2014and now help others do the same. Based in Munich, we work with companies across the globe.",
+    tag: "Team",
+    heading: "We're operators, not theorists",
+    body: "Ivan and Tracy bring 30+ years of experience leading product, strategy, and operations across companies of all sizes. We've built, scaled, and optimized businesses\u2014and now help others do the same. Based in Munich, we work with companies across the globe.",
+    photoLabel: "Team Photo",
+    partners: [
+      {
+        name: "Ivan Skoko",
+        title: "Partner",
+        linkedinLabel: "Connect on LinkedIn",
+        linkedinUrl: "#",
+      },
+      {
+        name: "Tracy Chang",
+        title: "Partner",
+        linkedinLabel: "Connect on LinkedIn",
+        linkedinUrl: "#",
+      },
+    ],
   },
   urgency: {
     copy: "Competition is intensifying. The pace of change is accelerating. Those who hesitate today will struggle to catch up tomorrow.",

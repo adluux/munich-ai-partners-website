@@ -15,16 +15,26 @@ interface AccordionListProps {
 }
 
 export default function AccordionList({ items }: AccordionListProps) {
-  const [openId, setOpenId] = useState<string | null>(null);
+  const [openIds, setOpenIds] = useState<Set<string>>(new Set(["01"]));
 
   const handleToggle = (id: string) => {
-    setOpenId((previousValue) => (previousValue === id ? null : id));
+    setOpenIds((previousValue) => {
+      const nextValue = new Set(previousValue);
+
+      if (nextValue.has(id)) {
+        nextValue.delete(id);
+      } else {
+        nextValue.add(id);
+      }
+
+      return nextValue;
+    });
   };
 
   return (
     <div className="flex flex-col gap-4">
       {items.map((item) => {
-        const isOpen = openId === item.id;
+        const isOpen = openIds.has(item.id);
         const buttonId = `accordion-button-${item.id}`;
         const panelId = `accordion-panel-${item.id}`;
 
@@ -47,9 +57,6 @@ export default function AccordionList({ items }: AccordionListProps) {
               <span className="flex min-w-0 flex-1 flex-col gap-2">
                 <span className="font-sans text-[16px] font-medium leading-[1.4] text-primary md:text-[20px]">
                   {item.title}
-                </span>
-                <span className="font-sans text-[16px] font-normal leading-[1.5] text-text-secondary">
-                  {item.description}
                 </span>
               </span>
               <ChevronDown

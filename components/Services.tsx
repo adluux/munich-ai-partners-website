@@ -1,7 +1,6 @@
 import { clsx } from "clsx";
 import AccordionList from "./AccordionList";
 import FadeInWrapper from "./FadeInWrapper";
-import SectionBadge from "./SectionBadge";
 import { content } from "@/lib/content";
 
 interface ServicesProps {
@@ -13,13 +12,12 @@ export default function Services({ className }: ServicesProps) {
     <section
       id="services"
       className={clsx(
-        "scroll-mt-navbar bg-card px-6 py-[60px] lg:py-[100px]",
+        "scroll-mt-navbar bg-card px-6 pb-[60px] pt-4 lg:pb-[100px] lg:pt-8",
         className,
       )}
     >
       <div className="mx-auto max-w-container">
         <FadeInWrapper className="flex flex-col gap-4">
-          <SectionBadge label={content.services.tag} />
           <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
             {content.services.heading}
           </h2>

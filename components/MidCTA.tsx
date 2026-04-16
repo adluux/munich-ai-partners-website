@@ -10,7 +10,7 @@ interface MidCTAProps {
 export default function MidCTA({ className }: MidCTAProps) {
   return (
     <section
-      className={clsx("bg-background px-6 py-[60px] lg:py-[100px]", className)}
+      className={clsx("bg-background px-6 pb-[60px] pt-0 lg:pb-[100px]", className)}
     >
       <FadeInWrapper className="mx-auto flex max-w-container justify-center">
         <Link

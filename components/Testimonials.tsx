@@ -32,7 +32,6 @@ export default function Testimonials({ className }: TestimonialsProps) {
                 suffix={card.suffix}
                 title={card.title}
                 description={card.description}
-                badge={card.badge}
               />
             </FadeInWrapper>
           ))}

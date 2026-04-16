@@ -117,8 +117,8 @@ export default function NavbarClient({
               key={link.id}
               href={link.href}
               className={clsx(
-                "font-sans text-[16px] font-normal leading-[1.5] text-text-secondary transition-colors hover:text-text",
-                activeId === link.id && "text-text",
+                "font-sans text-[16px] font-normal leading-[1.5] text-primary transition-colors hover:text-primary",
+                activeId === link.id && "text-primary",
               )}
             >
               {link.label}
