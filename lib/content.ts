@@ -10,8 +10,8 @@ export const content = {
     links: [
       { label: "Impact", href: "#testimonials", id: "testimonials" },
       { label: "Services", href: "#services", id: "services" },
-      { label: "Team", href: "#team", id: "team" },
       { label: "About", href: "#about", id: "about" },
+      { label: "Team", href: "#team", id: "team" },
     ],
     ctaLabel: "Book a Call",
   },
@@ -29,6 +29,8 @@ export const content = {
         id: "01",
         target: 1,
         suffix: "x",
+        companyName: "Client Company",
+        logoLabel: "Logo",
         title: "Placeholder",
         description: "Placeholder result.",
       },
@@ -36,6 +38,8 @@ export const content = {
         id: "02",
         target: 2,
         suffix: "x",
+        companyName: "Client Company",
+        logoLabel: "Logo",
         title: "Placeholder",
         description: "Placeholder result.",
       },
@@ -43,6 +47,8 @@ export const content = {
         id: "03",
         target: 3,
         suffix: "x",
+        companyName: "Client Company",
+        logoLabel: "Logo",
         title: "Placeholder",
         description: "Placeholder result.",
       },
@@ -51,10 +57,10 @@ export const content = {
   guarantee: {
     headline: "Our Commitment",
     copy:
-      "Every engagement starts with clear success metrics \u2014 agreed upfront. We only take on projects where we're confident we can deliver measurable results.",
+      "Every engagement starts with clear success metrics \u2014 agreed upfront.\nWe only take on projects where we're confident we can deliver measurable results.",
   },
   midCta: {
-    label: "Book a free consultation",
+    label: "Book a free consultation \u2014>",
   },
   howWeWork: {
     tag: "How we work",

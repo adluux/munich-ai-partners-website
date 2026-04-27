@@ -48,7 +48,7 @@ export default function WhoWeAre({ className }: WhoWeAreProps) {
         <div className="mx-auto mt-8 grid max-w-[700px] grid-cols-1 gap-8 md:grid-cols-2">
           {content.team.partners.map((partner) => (
             <div key={partner.name} className="flex flex-col items-center gap-3 text-center">
-              <h3 className="font-heading text-[28px] font-bold leading-[1.3] text-primary">
+              <h3 className="font-sans text-[20px] font-medium leading-[1.4] text-primary">
                 {partner.name}
               </h3>
               <p className="font-sans text-[16px] font-normal leading-[1.5] text-text-secondary">

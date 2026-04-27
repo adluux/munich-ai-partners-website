@@ -18,7 +18,7 @@ export default function SectionBadge({
         align === "start" && "self-start",
         align === "center" && "self-center",
         variant === "light" && "bg-accent/10 text-accent",
-        variant === "dark" && "border border-white/20 bg-white/10 text-white",
+        variant === "dark" && "bg-white/10 text-white",
       )}
     >
       {label}

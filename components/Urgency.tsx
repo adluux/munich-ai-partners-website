@@ -8,13 +8,7 @@ interface UrgencyProps {
 
 export default function Urgency({ className }: UrgencyProps) {
   return (
-    <section
-      id="about"
-      className={clsx(
-        "scroll-mt-navbar bg-background px-6 py-[60px] lg:py-[100px]",
-        className,
-      )}
-    >
+    <section className={clsx("bg-background px-6 py-[60px] lg:py-[100px]", className)}>
       <FadeInWrapper className="mx-auto max-w-narrow text-center">
         <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
           {content.urgency.copy}

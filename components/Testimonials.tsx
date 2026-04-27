@@ -30,6 +30,8 @@ export default function Testimonials({ className }: TestimonialsProps) {
               <MetricCard
                 target={card.target}
                 suffix={card.suffix}
+                companyName={card.companyName}
+                logoLabel={card.logoLabel}
                 title={card.title}
                 description={card.description}
               />

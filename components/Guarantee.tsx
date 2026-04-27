@@ -7,6 +7,8 @@ interface GuaranteeProps {
 }
 
 export default function Guarantee({ className }: GuaranteeProps) {
+  const guaranteeLines = content.guarantee.copy.split("\n");
+
   return (
     <section
       className={clsx("bg-background px-6 pb-6 pt-[60px] lg:pb-8 lg:pt-[100px]", className)}
@@ -16,7 +18,11 @@ export default function Guarantee({ className }: GuaranteeProps) {
           {content.guarantee.headline}
         </h2>
         <p className="font-sans text-[16px] font-normal leading-[1.5] text-text">
-          {content.guarantee.copy}
+          {guaranteeLines.map((line) => (
+            <span key={line} className="block">
+              {line}
+            </span>
+          ))}
         </p>
       </FadeInWrapper>
     </section>

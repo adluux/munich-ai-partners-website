@@ -108,8 +108,8 @@ export default function NavbarClient({
       <div className="ml-auto flex items-center gap-2 md:gap-3">
         <div
           className={clsx(
-            "hidden items-center gap-8 md:flex",
-            hasShadow && "rounded-lg bg-background/80 px-3 py-2 backdrop-blur",
+            "hidden items-center gap-8 rounded-lg px-3 py-2 md:flex lg:gap-10",
+            hasShadow ? "bg-background/80 backdrop-blur shadow-nav" : "bg-transparent",
           )}
         >
           {links.map((link) => (
@@ -146,14 +146,14 @@ export default function NavbarClient({
         <div
           id="mobile-navigation"
           ref={overlayRef}
-          className="fixed inset-0 top-navbar z-40 flex flex-col gap-4 overflow-y-auto border-t border-border-light bg-background px-6 py-6 md:hidden"
+          className="fixed bottom-0 left-0 right-0 top-navbar z-40 flex w-screen flex-col gap-4 overflow-y-auto border-t border-border-light bg-background px-6 py-6 md:hidden"
         >
           {links.map((link) => (
             <Link
               key={link.id}
               href={link.href}
               onClick={handleMenuClose}
-              className="rounded-lg border border-border-light bg-card px-5 py-4 font-sans text-[16px] font-medium leading-[1.4] text-text shadow-soft transition duration-300 hover:scale-[1.02]"
+              className="w-full rounded-lg border border-border-light bg-card px-5 py-4 font-sans text-[16px] font-medium leading-[1.4] text-text shadow-soft transition duration-300 hover:scale-[1.02]"
             >
               {link.label}
             </Link>
@@ -161,7 +161,7 @@ export default function NavbarClient({
           <Link
             href="#book"
             onClick={handleMenuClose}
-            className="inline-flex items-center justify-center rounded-lg bg-cta px-5 py-4 font-sans text-[16px] font-semibold leading-[1.3] text-white transition duration-300 hover:scale-[1.02] hover:shadow-lg"
+            className="inline-flex w-full items-center justify-center rounded-lg bg-cta px-5 py-4 font-sans text-[16px] font-semibold leading-[1.3] text-white transition duration-300 hover:scale-[1.02] hover:shadow-lg"
           >
             {ctaLabel}
           </Link>
