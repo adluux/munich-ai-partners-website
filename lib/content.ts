@@ -1,4 +1,7 @@
 export const content = {
+  booking: {
+    url: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0v6PZydheL8-0l8arI22xHx1dA8xCfDbfel5C2ClMbEk4A3z1ydExnDRb4E--EAlmC93C8c74U",
+  },
   brand: {
     name: "Munich AI Partners",
     tagline: "AI-First Consulting",

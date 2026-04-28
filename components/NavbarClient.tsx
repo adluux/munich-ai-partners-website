@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import useScrollSpy from "@/hooks/useScrollSpy";
+import { content } from "@/lib/content";
 
 interface NavLinkItem {
   label: string;
@@ -125,12 +126,14 @@ export default function NavbarClient({
             </Link>
           ))}
         </div>
-        <Link
-          href="#book"
+        <a
+          href={content.booking.url}
+          target="_blank"
+          rel="noreferrer"
           className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-3 font-sans text-[16px] font-semibold leading-[1.3] text-white transition duration-300 hover:scale-[1.02] hover:shadow-lg"
         >
           {ctaLabel}
-        </Link>
+        </a>
         <button
           type="button"
           onClick={handleMenuToggle}
@@ -146,8 +149,19 @@ export default function NavbarClient({
         <div
           id="mobile-navigation"
           ref={overlayRef}
-          className="fixed bottom-0 left-0 right-0 top-navbar z-40 flex w-screen flex-col gap-4 overflow-y-auto border-t border-border-light bg-background px-6 py-6 md:hidden"
+          className="fixed inset-0 z-40 flex w-screen flex-col overflow-y-auto bg-background px-6 py-6 md:hidden"
         >
+          <div className="flex items-center justify-end">
+            <button
+              type="button"
+              onClick={handleMenuClose}
+              aria-label="Close navigation menu"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border-light bg-card text-text transition duration-300 hover:scale-[1.02]"
+            >
+              <X size={20} />
+            </button>
+          </div>
+          <div className="mt-6 flex flex-col gap-4">
           {links.map((link) => (
             <Link
               key={link.id}
@@ -158,13 +172,16 @@ export default function NavbarClient({
               {link.label}
             </Link>
           ))}
-          <Link
-            href="#book"
+          <a
+            href={content.booking.url}
+            target="_blank"
+            rel="noreferrer"
             onClick={handleMenuClose}
             className="inline-flex w-full items-center justify-center rounded-lg bg-cta px-5 py-4 font-sans text-[16px] font-semibold leading-[1.3] text-white transition duration-300 hover:scale-[1.02] hover:shadow-lg"
           >
             {ctaLabel}
-          </Link>
+          </a>
+          </div>
         </div>
       )}
     </>
