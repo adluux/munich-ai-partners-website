@@ -16,10 +16,10 @@ body {
 }
 
 .hero-surface {
-  background-color: theme("colors.primary");
+  background-color: theme("colors.background");
   background-image:
-    radial-gradient(circle at top, rgb(107 107 78 / 0.28), transparent 52%),
-    linear-gradient(180deg, rgb(61 61 46 / 0.9), rgb(61 61 46 / 1));
+    radial-gradient(circle at top left, rgb(232 160 16 / 0.18), transparent 40%),
+    radial-gradient(circle at right, rgb(10 22 40 / 0.08), transparent 45%);
 }
 
 .fade-enter {

@@ -1,7 +1,6 @@
 import { clsx } from "clsx";
 import FadeInWrapper from "./FadeInWrapper";
 import MetricCard from "./MetricCard";
-import SectionBadge from "./SectionBadge";
 import { content } from "@/lib/content";
 
 interface TestimonialsProps {
@@ -19,7 +18,6 @@ export default function Testimonials({ className }: TestimonialsProps) {
     >
       <div className="mx-auto max-w-container">
         <FadeInWrapper className="flex flex-col gap-3">
-          <SectionBadge label={content.testimonials.tag} />
           <h2 className="max-w-prose font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
             {content.testimonials.heading}
           </h2>

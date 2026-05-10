@@ -110,7 +110,7 @@ export default function NavbarClient({
         <div
           className={clsx(
             "hidden items-center gap-8 rounded-lg px-3 py-2 md:flex lg:gap-10",
-            hasShadow ? "bg-background/80 backdrop-blur shadow-nav" : "bg-transparent",
+            hasShadow ? "bg-primary/90 backdrop-blur shadow-nav" : "bg-transparent",
           )}
         >
           {links.map((link) => (
@@ -118,8 +118,8 @@ export default function NavbarClient({
               key={link.id}
               href={link.href}
               className={clsx(
-                "font-sans text-[16px] font-normal leading-[1.5] text-primary transition-colors hover:text-primary",
-                activeId === link.id && "text-primary",
+                "font-sans text-[16px] font-normal leading-[1.5] text-white transition-colors hover:text-white",
+                activeId === link.id && "text-white",
               )}
             >
               {link.label}
@@ -130,7 +130,7 @@ export default function NavbarClient({
           href={content.booking.url}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-3 font-sans text-[16px] font-semibold leading-[1.3] text-white transition duration-300 hover:scale-[1.02] hover:shadow-lg"
+          className="inline-flex items-center justify-center rounded-lg bg-cta px-4 py-3 font-sans text-[16px] font-semibold leading-[1.3] text-primary transition duration-300 hover:scale-[1.02] hover:shadow-lg"
         >
           {ctaLabel}
         </a>
@@ -140,7 +140,7 @@ export default function NavbarClient({
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border-light bg-card text-text transition duration-300 hover:scale-[1.02] md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white transition duration-300 hover:scale-[1.02] md:hidden"
         >
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -149,38 +149,38 @@ export default function NavbarClient({
         <div
           id="mobile-navigation"
           ref={overlayRef}
-          className="fixed inset-0 z-40 flex w-screen flex-col overflow-y-auto bg-background px-6 py-6 md:hidden"
+          className="fixed inset-0 z-40 flex w-screen flex-col overflow-y-auto bg-primary px-6 py-6 md:hidden"
         >
           <div className="flex items-center justify-end">
             <button
               type="button"
               onClick={handleMenuClose}
               aria-label="Close navigation menu"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border-light bg-card text-text transition duration-300 hover:scale-[1.02]"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white transition duration-300 hover:scale-[1.02]"
             >
               <X size={20} />
             </button>
           </div>
           <div className="mt-6 flex flex-col gap-4">
-          {links.map((link) => (
-            <Link
-              key={link.id}
-              href={link.href}
+            {links.map((link) => (
+              <Link
+                key={link.id}
+                href={link.href}
+                onClick={handleMenuClose}
+                className="w-full rounded-lg border border-white/20 bg-white/10 px-5 py-4 font-sans text-[16px] font-medium leading-[1.4] text-white transition duration-300 hover:scale-[1.02]"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <a
+              href={content.booking.url}
+              target="_blank"
+              rel="noreferrer"
               onClick={handleMenuClose}
-              className="w-full rounded-lg border border-border-light bg-card px-5 py-4 font-sans text-[16px] font-medium leading-[1.4] text-text shadow-soft transition duration-300 hover:scale-[1.02]"
+              className="inline-flex w-full items-center justify-center rounded-lg bg-cta px-5 py-4 font-sans text-[16px] font-semibold leading-[1.3] text-primary transition duration-300 hover:scale-[1.02] hover:shadow-lg"
             >
-              {link.label}
-            </Link>
-          ))}
-          <a
-            href={content.booking.url}
-            target="_blank"
-            rel="noreferrer"
-            onClick={handleMenuClose}
-            className="inline-flex w-full items-center justify-center rounded-lg bg-cta px-5 py-4 font-sans text-[16px] font-semibold leading-[1.3] text-white transition duration-300 hover:scale-[1.02] hover:shadow-lg"
-          >
-            {ctaLabel}
-          </a>
+              {ctaLabel}
+            </a>
           </div>
         </div>
       )}

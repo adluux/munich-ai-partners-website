@@ -19,14 +19,13 @@ export const content = {
     ctaLabel: "Book a Call",
   },
   hero: {
-    headline: "Do you want better business results?",
+    headline: "Better business results, from strategy to execution.",
     subheadline:
-      "We help you achieve them, from strategy to execution, with an AI-first approach.",
+      "We're business consultants who help leaders identify the highest-value problems and solve them - bringing decades of operating experience and AI where it makes us faster, sharper, and better.",
     ctaLabel: "Book a free consultation \u2192",
   },
   testimonials: {
-    tag: "Delivered Results",
-    heading: "What we achieved for clients",
+    heading: "Value delivered to our clients",
     cards: [
       {
         id: "01",
@@ -66,54 +65,54 @@ export const content = {
     label: "Book a free consultation \u2014>",
   },
   howWeWork: {
-    tag: "How we work",
-    body: "We gain a thorough understanding of your business, tackle problems that matter most and measure the impact.",
+    heading: "Our approach",
+    body: "We start with your business, not with AI. We identify the highest-value opportunity, execute quickly, and measure the result.",
   },
   services: {
     tag: "Our Services",
-    heading: "Where we can help",
+    heading: "Where we can add value",
     items: [
       {
         id: "01",
         title: "AI Implementation",
         description:
-          "We help you unlock AI\u2019s value through strategic assessment, practical implementation, and measured results.",
+          "Identify where AI can create real value, put it into practice, and measure the business result.",
       },
       {
         id: "02",
         title: "Strategy",
         description:
-          "We partner with you to craft the vision and strategic roadmap that drives organizational alignment and execution.",
+          "Helping you decide where to focus, what to change, and how to move the business forward.",
       },
       {
         id: "03",
         title: "Product",
         description:
-          "We solve product challenges across the full spectrum: positioning, pricing, packaging, design, and go-to-market strategy.",
+          "From early concept through design, build, pricing, and launch - we help shape products customers understand and want.",
       },
       {
         id: "04",
         title: "Marketing & Sales",
         description:
-          "We help you generate more qualified leads and close more deals through better content, process, and sales enablement.",
+          "Helping you improve how you attract demand, move deals forward, and turn commercial effort into real growth.",
       },
       {
         id: "05",
         title: "Operations",
         description:
-          "We transform operations into a competitive advantage by optimizing how you support customers, manage people, and deliver projects.",
+          "Make your operations faster, higher quality, and ready for more volume \u2014 without a linear increase in cost",
       },
     ],
   },
   howWeDoIt: {
-    heading: "Others sell slides. We stay for the outcome.",
-    body: "Others sell slides and disappear when reality hits. We bring decades of hands-on industry experience and use AI to cut overhead and move faster, delivering better judgment, better work, and more value. We define success upfront, tailor every engagement to your business, and stay until the results show up in the numbers.",
+    heading: "Others deliver slides. We deliver outcomes.",
+    body: "Most firms hand over a deck and disappear when execution gets hard. We don't. We bring hands-on operating experience, use AI to move faster and produce better work, and stay focused on what matters: measurable results in the business.",
     linkLabel: "See how we did it for Urban Point \u2192",
   },
   team: {
     tag: "Team",
     heading: "We're operators, not theorists",
-    body: "Ivan and Tracy bring 30+ years of experience leading product, strategy, and operations across companies of all sizes. We've built, scaled, and optimized businesses\u2014and now help others do the same. Based in Munich, we work with companies across the globe.",
+    body: "Together, we bring 40+ years of hands-on experience building, scaling, and fixing companies from the inside - leading product, sales, and operations. We now bring that experience directly to our clients.",
     photoLabel: "Team Photo",
     partners: [
       {
@@ -131,17 +130,18 @@ export const content = {
     ],
   },
   urgency: {
-    copy: "Competition is intensifying. The pace of change is accelerating. Those who hesitate today will struggle to catch up tomorrow.",
+    copy: "AI is changing how companies build, sell, and operate. The leaders who figure out where to apply it - and where not to - are pulling ahead. The gap compounds quietly, then suddenly. Evolve or get left behind.",
   },
   finalCta: {
     tag: "Let\u2019s Talk",
-    heading: "Ready to get started?",
-    subheadline: "No sales pitch \u2014 just understanding your needs.",
-    ctaLabel: "Book a Free Consultation",
+    heading: "Ready to talk?",
+    subheadline:
+      "30 minutes, no pitch deck, no obligation. Tell us about your business, your bottlenecks, and your priorities. Let\u2019s explore where we can help.",
+    ctaLabel: "Book a free consultation",
   },
   leadMagnet: {
-    heading: "See how we approach real work",
-    body: "Thinking about using AI to get work done, but unsure where to start? This free download illustrates how we approach a common business challenge, building a website, using AI-first ways of working.",
-    ctaLabel: "Download Free Guide",
+    heading: "An example of how we use AI",
+    body: "This is the full playbook we used to build the site you're on.",
+    ctaLabel: "Download the playbook",
   },
 } as const;

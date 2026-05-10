@@ -17,7 +17,7 @@ export default function HowWeDoIt({ className }: HowWeDoItProps) {
         <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-white md:text-[40px]">
           {content.howWeDoIt.heading}
         </h2>
-        <p className="font-sans text-[16px] font-normal leading-[1.5] text-white">
+        <p className="font-sans text-[16px] font-normal leading-[1.5] text-text-muted">
           {content.howWeDoIt.body}
         </p>
         <Link
