@@ -33,7 +33,7 @@ export default function MetricCard({
       </div>
       <div
         ref={ref}
-        className="font-heading text-[28px] font-bold leading-[1.3] text-accent md:text-[40px]"
+        className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]"
       >
         {displayValue}
       </div>

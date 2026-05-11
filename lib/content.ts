@@ -21,7 +21,7 @@ export const content = {
   hero: {
     headline: "Better business results, from strategy to execution.",
     subheadline:
-      "We're business consultants who help leaders identify the highest-value problems and solve them - bringing decades of operating experience and AI where it makes us faster, sharper, and better.",
+      "We help leaders identify the highest-value problems and solve them with decades of operating experience and AI.",
     ctaLabel: "Book a free consultation \u2192",
   },
   testimonials: {
@@ -113,7 +113,7 @@ export const content = {
     tag: "Team",
     heading: "We're operators, not theorists",
     body: "Together, we bring 40+ years of hands-on experience building, scaling, and fixing companies from the inside - leading product, sales, and operations. We now bring that experience directly to our clients.",
-    photoLabel: "Team Photo",
+    photoLabel: "Photo",
     partners: [
       {
         name: "Ivan Skoko",
@@ -123,6 +123,12 @@ export const content = {
       },
       {
         name: "Tracy Chang",
+        title: "Partner",
+        linkedinLabel: "Connect on LinkedIn",
+        linkedinUrl: "#",
+      },
+      {
+        name: "Michael Malderle",
         title: "Partner",
         linkedinLabel: "Connect on LinkedIn",
         linkedinUrl: "#",

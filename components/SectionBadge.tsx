@@ -17,7 +17,7 @@ export default function SectionBadge({
         "inline-block w-fit rounded-full px-3 py-1 font-sans text-[14px] font-medium leading-[1.4]",
         align === "start" && "self-start",
         align === "center" && "self-center",
-        variant === "light" && "bg-accent/10 text-accent",
+        variant === "light" && "border border-border-light bg-card text-primary",
         variant === "dark" && "bg-white/10 text-white",
       )}
     >

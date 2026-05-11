@@ -39,10 +39,7 @@ export default function AccordionList({ items }: AccordionListProps) {
         const panelId = `accordion-panel-${item.id}`;
 
         return (
-          <article
-            key={item.id}
-            className="rounded-lg border border-border-light bg-white p-6 shadow-soft"
-          >
+          <article key={item.id} className="rounded-lg border border-border-light bg-card p-6 shadow-soft">
             <button
               id={buttonId}
               type="button"
@@ -51,7 +48,7 @@ export default function AccordionList({ items }: AccordionListProps) {
               aria-controls={panelId}
               className="flex w-full items-start gap-4 text-left"
             >
-              <span className="font-sans text-[16px] font-medium leading-[1.4] text-accent md:text-[20px]">
+              <span className="font-sans text-[16px] font-medium leading-[1.4] text-text-secondary md:text-[20px]">
                 {item.id}
               </span>
               <span className="flex min-w-0 flex-1 flex-col gap-2">

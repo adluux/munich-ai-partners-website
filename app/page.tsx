@@ -18,12 +18,12 @@ export default function Page() {
       <Navbar />
       <Hero />
       <Testimonials />
-      <Guarantee />
+      <HowWeDoIt />
       <MidCTA />
       <HowWeWork />
       <Services />
       <LeadMagnet />
-      <HowWeDoIt />
+      <Guarantee />
       <WhoWeAre />
       <Urgency />
       <FinalCTA />

@@ -40,14 +40,14 @@ export default function WhoWeAre({ className }: WhoWeAreProps) {
         <p className="font-sans text-[16px] font-normal leading-[1.5] text-text">
           {content.team.body}
         </p>
-        <div className="mx-auto mt-12 flex aspect-video max-w-[700px] items-center justify-center rounded-lg bg-card">
-          <span className="font-sans text-[16px] font-normal leading-[1.5] text-text-secondary">
-            {content.team.photoLabel}
-          </span>
-        </div>
-        <div className="mx-auto mt-8 grid max-w-[700px] grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="mx-auto mt-8 grid max-w-[980px] grid-cols-1 gap-8 md:grid-cols-3">
           {content.team.partners.map((partner) => (
             <div key={partner.name} className="flex flex-col items-center gap-3 text-center">
+              <div className="flex aspect-square w-full max-w-[220px] items-center justify-center rounded-lg bg-card">
+                <span className="font-sans text-[16px] font-normal leading-[1.5] text-text-secondary">
+                  {content.team.photoLabel}
+                </span>
+              </div>
               <h3 className="font-sans text-[20px] font-medium leading-[1.4] text-primary">
                 {partner.name}
               </h3>

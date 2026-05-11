@@ -18,8 +18,8 @@ body {
 .hero-surface {
   background-color: theme("colors.background");
   background-image:
-    radial-gradient(circle at top left, rgb(232 160 16 / 0.18), transparent 40%),
-    radial-gradient(circle at right, rgb(10 22 40 / 0.08), transparent 45%);
+    radial-gradient(circle at top left, rgb(13 13 13 / 0.04), transparent 38%),
+    radial-gradient(circle at right, rgb(13 13 13 / 0.02), transparent 42%);
 }
 
 .fade-enter {

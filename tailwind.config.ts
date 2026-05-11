@@ -11,15 +11,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#0A1628",
-        background: "#F8F6F2",
-        card: "#FFFFFF",
-        accent: "#E8A010",
-        cta: "#E8A010",
-        text: "#2D2D2D",
-        "text-secondary": "#555555",
-        "text-muted": "#8BA3C7",
-        "border-light": "#DEDAD3",
+        primary: "#0D0D0D",
+        background: "#FFFFFF",
+        card: "#F5F5F5",
+        accent: "#2563EB",
+        "accent-bg": "#F0F4FF",
+        cta: "#0D0D0D",
+        text: "#555555",
+        "text-secondary": "#999999",
+        "text-muted": "#999999",
+        "border-light": "#E4E4E4",
         white: "#FFFFFF",
       },
       fontFamily: {
@@ -36,7 +37,7 @@ const config: Config = {
       },
       boxShadow: {
         nav: "0 12px 30px rgba(45, 45, 45, 0.08)",
-        soft: "0 18px 45px rgba(10, 22, 40, 0.08)",
+        soft: "0 18px 45px rgba(13, 13, 13, 0.08)",
       },
       transitionDuration: {
         600: "600ms",

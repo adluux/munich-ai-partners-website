@@ -23,7 +23,7 @@ export default function Hero({ className }: HeroProps) {
             href={content.booking.url}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-lg bg-cta px-6 py-4 font-sans text-[16px] font-semibold leading-[1.3] text-primary transition duration-300 hover:scale-[1.02] hover:shadow-lg"
+            className="inline-flex items-center justify-center rounded-lg bg-cta px-6 py-4 font-sans text-[16px] font-semibold leading-[1.3] text-white transition duration-300 hover:scale-[1.02] hover:shadow-lg"
           >
             {content.hero.ctaLabel}
           </a>
