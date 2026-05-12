@@ -4,6 +4,7 @@ import { clsx } from "clsx";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import useScrollSpy from "@/hooks/useScrollSpy";
 import { content } from "@/lib/content";
 
@@ -24,9 +25,14 @@ export default function NavbarClient({
 }: NavbarClientProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasShadow, setHasShadow] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const sectionIds = useMemo(() => links.map((link) => link.id), [links]);
   const activeId = useScrollSpy({ sectionIds });
   const overlayRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -145,45 +151,48 @@ export default function NavbarClient({
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
-      {isMenuOpen && (
-        <div
-          id="mobile-navigation"
-          ref={overlayRef}
-          className="fade-enter fixed inset-0 z-[60] flex w-screen flex-col overflow-y-auto bg-primary px-6 py-6 md:hidden"
-        >
-          <div className="flex items-center justify-end">
-            <button
-              type="button"
-              onClick={handleMenuClose}
-              aria-label="Close navigation menu"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white transition duration-300 hover:scale-[1.02]"
-            >
-              <X size={20} />
-            </button>
-          </div>
-          <div className="mt-6 flex flex-col gap-4">
-            {links.map((link) => (
-              <Link
-                key={link.id}
-                href={link.href}
+      {isMounted &&
+        isMenuOpen &&
+        createPortal(
+          <div
+            id="mobile-navigation"
+            ref={overlayRef}
+            className="fade-enter fixed inset-0 z-[999] flex w-screen flex-col overflow-y-auto bg-primary px-6 py-6 md:hidden"
+          >
+            <div className="flex items-center justify-end">
+              <button
+                type="button"
                 onClick={handleMenuClose}
-                className="w-full border-b border-white/10 py-4 font-sans text-[18px] font-medium leading-[1.4] text-white/70 transition-colors hover:text-white"
+                aria-label="Close navigation menu"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white transition duration-300 hover:scale-[1.02]"
               >
-                {link.label}
-              </Link>
-            ))}
-            <a
-              href={content.booking.url}
-              target="_blank"
-              rel="noreferrer"
-              onClick={handleMenuClose}
-              className="mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-white bg-transparent px-5 py-4 font-sans text-[16px] font-semibold leading-[1.3] text-white transition duration-300 hover:bg-white hover:text-primary"
-            >
-              {ctaLabel}
-            </a>
-          </div>
-        </div>
-      )}
+                <X size={20} />
+              </button>
+            </div>
+            <div className="mt-6 flex flex-col gap-4">
+              {links.map((link) => (
+                <Link
+                  key={link.id}
+                  href={link.href}
+                  onClick={handleMenuClose}
+                  className="min-h-11 w-full border-b border-white/10 py-4 font-sans text-[18px] font-medium leading-[1.4] text-white/70 transition-colors hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <a
+                href={content.booking.url}
+                target="_blank"
+                rel="noreferrer"
+                onClick={handleMenuClose}
+                className="mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-white bg-transparent px-5 py-4 font-sans text-[16px] font-semibold leading-[1.3] text-white transition duration-300 hover:bg-white hover:text-primary"
+              >
+                {ctaLabel}
+              </a>
+            </div>
+          </div>,
+          document.body,
+        )}
     </>
   );
 }
