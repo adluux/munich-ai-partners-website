@@ -1,6 +1,5 @@
 import { clsx } from "clsx";
 import FadeInWrapper from "./FadeInWrapper";
-import SectionBadge from "./SectionBadge";
 import { content } from "@/lib/content";
 
 interface WhoWeAreProps {
@@ -33,7 +32,6 @@ export default function WhoWeAre({ className }: WhoWeAreProps) {
       )}
     >
       <FadeInWrapper className="mx-auto flex max-w-prose flex-col items-center gap-4 text-center">
-        <SectionBadge label={content.team.tag} align="center" />
         <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
           {content.team.heading}
         </h2>

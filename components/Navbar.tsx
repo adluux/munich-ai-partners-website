@@ -10,7 +10,7 @@ export default function Navbar({ className }: NavbarProps) {
   return (
     <nav
       className={clsx(
-        "sticky top-0 z-50 border-b border-primary/10 bg-primary/95 backdrop-blur",
+        "sticky top-0 z-50 border-b border-white/10 bg-primary backdrop-blur",
         className,
       )}
     >
@@ -34,7 +34,7 @@ function LinkBrand({ className }: LinkBrandProps) {
     <a
       href="#main-content"
       className={clsx(
-        "min-w-0 font-sans text-[13px] font-semibold uppercase tracking-[0.24em] text-white sm:text-[15px]",
+        "min-w-0 font-heading text-[20px] font-bold leading-none text-white",
         className,
       )}
     >

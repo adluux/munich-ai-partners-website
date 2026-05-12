@@ -21,7 +21,7 @@ export const content = {
   hero: {
     headline: "Better business results, from strategy to execution.",
     subheadline:
-      "We help leaders identify the highest-value problems and solve them with decades of operating experience and AI.",
+      "We help leaders identify the highest-value problems and solve them, leveraging decades of operating experience, using AI where it creates real business value.",
     ctaLabel: "Book a free consultation \u2192",
   },
   testimonials: {
@@ -62,7 +62,7 @@ export const content = {
       "Every engagement starts with clear success metrics \u2014 agreed upfront.\nWe only take on projects where we're confident we can deliver measurable results.",
   },
   midCta: {
-    label: "Book a free consultation \u2014>",
+    label: "Book a free consultation \u2192",
   },
   howWeWork: {
     heading: "Our approach",

@@ -30,7 +30,7 @@ export default function NavbarClient({
 
   useEffect(() => {
     const handleScroll = () => {
-      setHasShadow(window.scrollY > 12);
+      setHasShadow(window.scrollY > 50);
     };
 
     handleScroll();
@@ -110,7 +110,7 @@ export default function NavbarClient({
         <div
           className={clsx(
             "hidden items-center gap-8 rounded-lg px-3 py-2 md:flex lg:gap-10",
-            hasShadow ? "bg-primary/90 backdrop-blur shadow-nav" : "bg-transparent",
+            hasShadow ? "bg-transparent shadow-[0_4px_16px_rgba(0,0,0,0.25)]" : "bg-transparent",
           )}
         >
           {links.map((link) => (
@@ -118,7 +118,7 @@ export default function NavbarClient({
               key={link.id}
               href={link.href}
               className={clsx(
-                "font-sans text-[16px] font-normal leading-[1.5] text-white transition-colors hover:text-white",
+                "font-sans text-[16px] font-normal leading-[1.5] text-white/70 transition-colors hover:text-white",
                 activeId === link.id && "text-white",
               )}
             >
@@ -130,7 +130,7 @@ export default function NavbarClient({
           href={content.booking.url}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-3 font-sans text-[16px] font-semibold leading-[1.3] text-primary transition duration-300 hover:scale-[1.02] hover:shadow-lg"
+          className="hidden items-center justify-center rounded-lg border border-white bg-transparent px-5 py-[10px] font-sans text-[16px] font-semibold leading-[1.3] text-white transition duration-300 hover:bg-white hover:text-primary md:inline-flex"
         >
           {ctaLabel}
         </a>
@@ -149,7 +149,7 @@ export default function NavbarClient({
         <div
           id="mobile-navigation"
           ref={overlayRef}
-          className="fixed inset-0 z-40 flex w-screen flex-col overflow-y-auto bg-primary px-6 py-6 md:hidden"
+          className="fade-enter fixed inset-0 z-40 flex w-screen flex-col overflow-y-auto bg-primary px-6 py-6 md:hidden"
         >
           <div className="flex items-center justify-end">
             <button
@@ -167,7 +167,7 @@ export default function NavbarClient({
                 key={link.id}
                 href={link.href}
                 onClick={handleMenuClose}
-                className="w-full rounded-lg border border-white/20 bg-white/10 px-5 py-4 font-sans text-[16px] font-medium leading-[1.4] text-white transition duration-300 hover:scale-[1.02]"
+                className="w-full border-b border-white/10 py-4 font-sans text-[18px] font-medium leading-[1.4] text-white/70 transition-colors hover:text-white"
               >
                 {link.label}
               </Link>
@@ -177,7 +177,7 @@ export default function NavbarClient({
               target="_blank"
               rel="noreferrer"
               onClick={handleMenuClose}
-              className="inline-flex w-full items-center justify-center rounded-lg bg-white px-5 py-4 font-sans text-[16px] font-semibold leading-[1.3] text-primary transition duration-300 hover:scale-[1.02] hover:shadow-lg"
+              className="mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-white bg-transparent px-5 py-4 font-sans text-[16px] font-semibold leading-[1.3] text-white transition duration-300 hover:bg-white hover:text-primary"
             >
               {ctaLabel}
             </a>
