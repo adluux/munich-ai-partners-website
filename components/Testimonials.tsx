@@ -12,7 +12,7 @@ export default function Testimonials({ className }: TestimonialsProps) {
     <section
       id="testimonials"
       className={clsx(
-        "scroll-mt-navbar border-b border-border-light bg-background px-6 pb-[60px] pt-12 lg:pb-[100px] lg:pt-14",
+        "scroll-mt-navbar bg-background px-6 pb-[60px] pt-12 lg:pb-[100px] lg:pt-14",
         className,
       )}
     >

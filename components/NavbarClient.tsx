@@ -149,7 +149,7 @@ export default function NavbarClient({
         <div
           id="mobile-navigation"
           ref={overlayRef}
-          className="fade-enter fixed inset-0 z-40 flex w-screen flex-col overflow-y-auto bg-primary px-6 py-6 md:hidden"
+          className="fade-enter fixed inset-0 z-[60] flex w-screen flex-col overflow-y-auto bg-primary px-6 py-6 md:hidden"
         >
           <div className="flex items-center justify-end">
             <button
