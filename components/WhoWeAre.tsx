@@ -48,7 +48,7 @@ export default function WhoWeAre({ className }: WhoWeAreProps) {
                   alt={partner.name}
                   fill
                   sizes="(max-width: 768px) 220px, 220px"
-                  className="object-cover"
+                  className={clsx("object-cover", partner.imageClassName)}
                 />
               </div>
               <h3 className="font-sans text-[20px] font-medium leading-[1.4] text-primary">

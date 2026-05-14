@@ -121,6 +121,7 @@ export const content = {
         linkedinLabel: "Connect on LinkedIn",
         linkedinUrl: "https://www.linkedin.com/in/skokoivan/",
         imageSrc: "/team/ivan-skoko.png",
+        imageClassName: "scale-[0.9] object-top",
       },
       {
         name: "Tracy Chang",
@@ -128,6 +129,7 @@ export const content = {
         linkedinLabel: "Connect on LinkedIn",
         linkedinUrl: "https://www.linkedin.com/in/tracha/",
         imageSrc: "/team/tracy-chang.png",
+        imageClassName: "object-center",
       },
       {
         name: "Michael Malderle",
@@ -135,6 +137,7 @@ export const content = {
         linkedinLabel: "Connect on LinkedIn",
         linkedinUrl: "https://www.linkedin.com/in/michaelmalderle/",
         imageSrc: "/team/michael-malderle.jpg",
+        imageClassName: "scale-[0.9] object-top",
       },
     ],
   },
