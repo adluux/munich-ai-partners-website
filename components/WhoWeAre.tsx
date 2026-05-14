@@ -1,4 +1,5 @@
 import { clsx } from "clsx";
+import Image from "next/image";
 import FadeInWrapper from "./FadeInWrapper";
 import { content } from "@/lib/content";
 
@@ -41,10 +42,14 @@ export default function WhoWeAre({ className }: WhoWeAreProps) {
         <div className="mx-auto mt-8 grid max-w-[980px] grid-cols-1 gap-8 md:grid-cols-3">
           {content.team.partners.map((partner) => (
             <div key={partner.name} className="flex flex-col items-center gap-3 text-center">
-              <div className="flex aspect-square w-full max-w-[220px] items-center justify-center rounded-lg bg-card">
-                <span className="font-sans text-[16px] font-normal leading-[1.5] text-text-secondary">
-                  {content.team.photoLabel}
-                </span>
+              <div className="relative aspect-square w-full max-w-[220px] overflow-hidden rounded-lg bg-card">
+                <Image
+                  src={partner.imageSrc}
+                  alt={partner.name}
+                  fill
+                  sizes="(max-width: 768px) 220px, 220px"
+                  className="object-cover"
+                />
               </div>
               <h3 className="font-sans text-[20px] font-medium leading-[1.4] text-primary">
                 {partner.name}
@@ -54,6 +59,8 @@ export default function WhoWeAre({ className }: WhoWeAreProps) {
               </p>
               <a
                 href={partner.linkedinUrl}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center gap-2 font-sans text-[16px] font-medium leading-[1.4] text-primary transition hover:underline"
               >
                 <LinkedInMark />
