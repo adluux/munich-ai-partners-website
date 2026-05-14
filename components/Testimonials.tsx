@@ -27,9 +27,9 @@ export default function Testimonials({ className }: TestimonialsProps) {
             <FadeInWrapper key={card.id}>
               <MetricCard
                 target={card.target}
+                prefix={card.prefix}
                 suffix={card.suffix}
                 companyName={card.companyName}
-                logoLabel={card.logoLabel}
                 title={card.title}
                 description={card.description}
               />
