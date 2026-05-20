@@ -1,12 +1,13 @@
 import { clsx } from "clsx";
 import FadeInWrapper from "./FadeInWrapper";
-import { content } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
 interface FinalCTAProps {
   className?: string;
+  content: SiteContent;
 }
 
-export default function FinalCTA({ className }: FinalCTAProps) {
+export default function FinalCTA({ className, content }: FinalCTAProps) {
   return (
     <section
       id="book"

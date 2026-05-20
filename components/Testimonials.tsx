@@ -1,13 +1,14 @@
 import { clsx } from "clsx";
 import FadeInWrapper from "./FadeInWrapper";
 import MetricCard from "./MetricCard";
-import { content } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
 interface TestimonialsProps {
   className?: string;
+  content: SiteContent;
 }
 
-export default function Testimonials({ className }: TestimonialsProps) {
+export default function Testimonials({ className, content }: TestimonialsProps) {
   return (
     <section
       id="testimonials"

@@ -1,13 +1,14 @@
 import { clsx } from "clsx";
 import Link from "next/link";
 import FadeInWrapper from "./FadeInWrapper";
-import { content } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
 interface LeadMagnetProps {
   className?: string;
+  content: SiteContent;
 }
 
-export default function LeadMagnet({ className }: LeadMagnetProps) {
+export default function LeadMagnet({ className, content }: LeadMagnetProps) {
   return (
     <section
       className={clsx("bg-background px-6 pb-[60px] pt-6 lg:pb-[100px] lg:pt-8", className)}

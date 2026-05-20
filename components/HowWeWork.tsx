@@ -1,12 +1,13 @@
 import { clsx } from "clsx";
 import FadeInWrapper from "./FadeInWrapper";
-import { content } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
 interface HowWeWorkProps {
   className?: string;
+  content: SiteContent;
 }
 
-export default function HowWeWork({ className }: HowWeWorkProps) {
+export default function HowWeWork({ className, content }: HowWeWorkProps) {
   return (
     <section className={clsx("bg-background px-6 pb-0 pt-[60px] lg:pt-[100px]", className)}>
       <FadeInWrapper className="mx-auto flex max-w-container flex-col items-start gap-4 text-left">

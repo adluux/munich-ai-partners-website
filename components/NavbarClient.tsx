@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import useScrollSpy from "@/hooks/useScrollSpy";
-import { content } from "@/lib/content";
+import type { Locale } from "@/lib/content";
 
 interface NavLinkItem {
   label: string;
@@ -17,11 +17,17 @@ interface NavLinkItem {
 interface NavbarClientProps {
   links: readonly NavLinkItem[];
   ctaLabel: string;
+  bookingUrl: string;
+  locale: Locale;
+  onLocaleChange: (locale: Locale) => void;
 }
 
 export default function NavbarClient({
   links,
   ctaLabel,
+  bookingUrl,
+  locale,
+  onLocaleChange,
 }: NavbarClientProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasShadow, setHasShadow] = useState(false);
@@ -29,6 +35,7 @@ export default function NavbarClient({
   const sectionIds = useMemo(() => links.map((link) => link.id), [links]);
   const activeId = useScrollSpy({ sectionIds });
   const overlayRef = useRef<HTMLDivElement>(null);
+  const isGerman = locale === "de";
 
   useEffect(() => {
     setIsMounted(true);
@@ -133,13 +140,30 @@ export default function NavbarClient({
           ))}
         </div>
         <a
-          href={content.booking.url}
+          href={bookingUrl}
           target="_blank"
           rel="noreferrer"
           className="hidden items-center justify-center rounded-lg border border-white bg-transparent px-5 py-[10px] font-sans text-[16px] font-semibold leading-[1.3] text-white transition duration-300 hover:bg-white hover:text-primary md:inline-flex"
         >
           {ctaLabel}
         </a>
+        <div className="flex items-center gap-2 font-sans text-[16px] font-medium leading-[1.3] text-white">
+          <button
+            type="button"
+            onClick={() => onLocaleChange("en")}
+            className={clsx("transition-colors hover:text-white", !isGerman ? "text-white" : "text-white/70")}
+          >
+            EN
+          </button>
+          <span className="text-white/50">/</span>
+          <button
+            type="button"
+            onClick={() => onLocaleChange("de")}
+            className={clsx("transition-colors hover:text-white", isGerman ? "text-white" : "text-white/70")}
+          >
+            DE
+          </button>
+        </div>
         <button
           type="button"
           onClick={handleMenuToggle}
@@ -181,7 +205,7 @@ export default function NavbarClient({
                 </Link>
               ))}
               <a
-                href={content.booking.url}
+                href={bookingUrl}
                 target="_blank"
                 rel="noreferrer"
                 onClick={handleMenuClose}
@@ -189,6 +213,29 @@ export default function NavbarClient({
               >
                 {ctaLabel}
               </a>
+              <div className="mt-2 flex items-center justify-center gap-2 font-sans text-[16px] font-medium leading-[1.3] text-white">
+                <button
+                  type="button"
+                  onClick={() => {
+                    onLocaleChange("en");
+                    handleMenuClose();
+                  }}
+                  className={clsx("transition-colors hover:text-white", !isGerman ? "text-white" : "text-white/70")}
+                >
+                  EN
+                </button>
+                <span className="text-white/50">/</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onLocaleChange("de");
+                    handleMenuClose();
+                  }}
+                  className={clsx("transition-colors hover:text-white", isGerman ? "text-white" : "text-white/70")}
+                >
+                  DE
+                </button>
+              </div>
             </div>
           </div>,
           document.body,

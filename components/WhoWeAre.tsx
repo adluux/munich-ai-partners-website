@@ -1,10 +1,11 @@
 import { clsx } from "clsx";
 import Image from "next/image";
 import FadeInWrapper from "./FadeInWrapper";
-import { content } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
 interface WhoWeAreProps {
   className?: string;
+  content: SiteContent;
 }
 
 interface LinkedInMarkProps {
@@ -23,7 +24,7 @@ function LinkedInMark({ className }: LinkedInMarkProps) {
   );
 }
 
-export default function WhoWeAre({ className }: WhoWeAreProps) {
+export default function WhoWeAre({ className, content }: WhoWeAreProps) {
   return (
     <section
       id="team"

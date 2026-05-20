@@ -1,12 +1,13 @@
 import { clsx } from "clsx";
 import FadeInWrapper from "./FadeInWrapper";
-import { content } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
 interface GuaranteeProps {
   className?: string;
+  content: SiteContent;
 }
 
-export default function Guarantee({ className }: GuaranteeProps) {
+export default function Guarantee({ className, content }: GuaranteeProps) {
   const guaranteeLines = content.guarantee.copy.split("\n");
 
   return (

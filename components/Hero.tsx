@@ -1,12 +1,13 @@
 import { clsx } from "clsx";
 import FadeInWrapper from "./FadeInWrapper";
-import { content } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
 interface HeroProps {
   className?: string;
+  content: SiteContent;
 }
 
-export default function Hero({ className }: HeroProps) {
+export default function Hero({ className, content }: HeroProps) {
   const headlineParts = content.hero.headline.split(", ");
 
   return (

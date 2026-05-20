@@ -1,12 +1,13 @@
 import { clsx } from "clsx";
 import FadeInWrapper from "./FadeInWrapper";
-import { content } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
 interface UrgencyProps {
   className?: string;
+  content: SiteContent;
 }
 
-export default function Urgency({ className }: UrgencyProps) {
+export default function Urgency({ className, content }: UrgencyProps) {
   return (
     <section className={clsx("bg-background px-6 py-[60px] lg:py-[100px]", className)}>
       <FadeInWrapper className="mx-auto max-w-prose border-y border-border-light py-10 text-center md:py-12">

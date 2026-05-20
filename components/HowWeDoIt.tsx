@@ -1,13 +1,14 @@
 import { clsx } from "clsx";
 import Link from "next/link";
 import FadeInWrapper from "./FadeInWrapper";
-import { content } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
 interface HowWeDoItProps {
   className?: string;
+  content: SiteContent;
 }
 
-export default function HowWeDoIt({ className }: HowWeDoItProps) {
+export default function HowWeDoIt({ className, content }: HowWeDoItProps) {
   return (
     <section
       id="about"

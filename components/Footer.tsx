@@ -1,11 +1,12 @@
 import { clsx } from "clsx";
-import { content } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
 interface FooterProps {
   className?: string;
+  content: SiteContent;
 }
 
-export default function Footer({ className }: FooterProps) {
+export default function Footer({ className, content }: FooterProps) {
   return (
     <footer className={clsx("bg-primary px-6 py-8", className)}>
       <div className="mx-auto flex max-w-container flex-col gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">

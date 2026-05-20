@@ -1,24 +1,35 @@
 import { clsx } from "clsx";
-import { content } from "@/lib/content";
+import type { Locale, SiteContent } from "@/lib/content";
 import NavbarClient from "./NavbarClient";
 
 interface NavbarProps {
   className?: string;
+  content: SiteContent;
+  locale: Locale;
+  onLocaleChange: (locale: Locale) => void;
 }
 
-export default function Navbar({ className }: NavbarProps) {
+export default function Navbar({
+  className,
+  content,
+  locale,
+  onLocaleChange,
+}: NavbarProps) {
   return (
     <nav
       className={clsx(
         "sticky top-0 z-50 border-b border-white/10 bg-primary backdrop-blur",
-        className,
+      className,
       )}
     >
       <div className="mx-auto flex max-w-container items-center justify-between gap-3 px-4 py-4 sm:px-6">
-        <LinkBrand />
+        <LinkBrand brandName={content.brand.name} />
         <NavbarClient
           links={content.navigation.links}
           ctaLabel={content.navigation.ctaLabel}
+          bookingUrl={content.booking.url}
+          locale={locale}
+          onLocaleChange={onLocaleChange}
         />
       </div>
     </nav>
@@ -27,9 +38,10 @@ export default function Navbar({ className }: NavbarProps) {
 
 interface LinkBrandProps {
   className?: string;
+  brandName: string;
 }
 
-function LinkBrand({ className }: LinkBrandProps) {
+function LinkBrand({ className, brandName }: LinkBrandProps) {
   return (
     <a
       href="#main-content"
@@ -38,7 +50,7 @@ function LinkBrand({ className }: LinkBrandProps) {
         className,
       )}
     >
-      {content.brand.name}
+      {brandName}
     </a>
   );
 }

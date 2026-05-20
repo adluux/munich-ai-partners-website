@@ -1,13 +1,14 @@
 import { clsx } from "clsx";
 import AccordionList from "./AccordionList";
 import FadeInWrapper from "./FadeInWrapper";
-import { content } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
 interface ServicesProps {
   className?: string;
+  content: SiteContent;
 }
 
-export default function Services({ className }: ServicesProps) {
+export default function Services({ className, content }: ServicesProps) {
   return (
     <section
       id="services"

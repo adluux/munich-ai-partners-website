@@ -1,12 +1,13 @@
 import { clsx } from "clsx";
 import FadeInWrapper from "./FadeInWrapper";
-import { content } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
 interface MidCTAProps {
   className?: string;
+  content: SiteContent;
 }
 
-export default function MidCTA({ className }: MidCTAProps) {
+export default function MidCTA({ className, content }: MidCTAProps) {
   return (
     <section
       className={clsx("bg-background px-6 pb-[60px] pt-0 lg:pb-[100px]", className)}
