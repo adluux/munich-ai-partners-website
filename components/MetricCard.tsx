@@ -28,7 +28,7 @@ export default function MetricCard({
       </p>
       <div
         ref={ref}
-        className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]"
+        className="font-sans text-[28px] font-semibold leading-[1.3] tabular-nums text-primary md:text-[40px]"
       >
         {prefix}
         {displayValue}
@@ -36,7 +36,7 @@ export default function MetricCard({
       <h3 className="font-sans text-[20px] font-medium leading-[1.4] text-primary">
         {title}
       </h3>
-      <p className="font-sans text-[16px] font-normal leading-[1.5] text-text-secondary">
+      <p className="font-sans text-[16px] font-normal leading-[1.5] text-text">
         {description}
       </p>
     </article>

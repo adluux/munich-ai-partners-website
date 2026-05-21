@@ -74,6 +74,7 @@ export interface SiteContent {
     heading: string;
     body: string;
     linkLabel: string;
+    linkHref: string;
   };
   team: {
     heading: string;
@@ -121,11 +122,11 @@ const translations: Record<Locale, SiteContent> = {
   en: {
     booking,
     brand: {
-      name: "Munich AI Partners",
+      name: "Corvant AI",
       tagline: "AI-First Consulting",
       email: "hello@[domain].com",
       location: "Munich, Germany",
-      copyright: "© 2026 Munich AI Partners. All rights reserved.",
+      copyright: "© 2026 Corvant AI. All rights reserved.",
     },
     navigation: {
       links: [
@@ -228,6 +229,7 @@ const translations: Record<Locale, SiteContent> = {
       heading: "Others deliver slides. We deliver outcomes.",
       body: "Most firms hand over a deck and disappear when execution gets hard. We don't. We bring hands-on operating experience, use AI to move faster and produce better work, and stay focused on what matters: measurable results in the business.",
       linkLabel: "See how we did it for Urban Point →",
+      linkHref: "/case-studies/urban-point",
     },
     team: {
       heading: "We're operators, not theorists",
@@ -271,11 +273,11 @@ const translations: Record<Locale, SiteContent> = {
   de: {
     booking,
     brand: {
-      name: "Munich AI Partners",
+      name: "Corvant AI",
       tagline: "KI-orientierte Beratung",
       email: "hello@[domain].com",
       location: "München, Deutschland",
-      copyright: "© 2026 Munich AI Partners. Alle Rechte vorbehalten.",
+      copyright: "© 2026 Corvant AI. Alle Rechte vorbehalten.",
     },
     navigation: {
       links: [
@@ -289,7 +291,7 @@ const translations: Record<Locale, SiteContent> = {
     hero: {
       headline: "Bessere Geschäftsergebnisse, von der Strategie bis zur Umsetzung.",
       subheadline:
-        "Wir helfen Führungskräften, die wertvollsten Probleme zu identifizieren und zu lösen — gestützt auf jahrzehntelange operative Erfahrung und den Einsatz von KI dort, wo sie echten geschäftlichen Mehrwert schafft.",
+        "Wir helfen Führungskräften, die wichtigsten Probleme zu identifizieren und zu lösen - mit jahrzehntelanger operativer Erfahrung und dem gezielten Einsatz von KI dort, wo sie echten Mehrwert schafft.",
       ctaLabel: "Kostenloses Erstgespräch buchen →",
     },
     testimonials: {
@@ -378,6 +380,7 @@ const translations: Record<Locale, SiteContent> = {
       heading: "Andere liefern Folien. Wir liefern Ergebnisse.",
       body: "Die meisten Firmen übergeben eine Präsentation und verschwinden, wenn die Umsetzung schwierig wird. Wir nicht. Wir bringen praktische operative Erfahrung ein, nutzen KI, um schneller zu arbeiten und bessere Ergebnisse zu erzielen, und bleiben auf das fokussiert, worauf es ankommt: messbare Ergebnisse im Unternehmen.",
       linkLabel: "Sehen Sie, wie wir es für Urban Point umgesetzt haben →",
+      linkHref: "/case-studies/urban-point",
     },
     team: {
       heading: "Wir sind Praktiker, keine Theoretiker",

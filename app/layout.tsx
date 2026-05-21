@@ -7,7 +7,8 @@ import "./globals.css";
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-heading",
-  weight: ["700"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
 });
 
 const inter = Inter({
@@ -17,11 +18,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Munich AI Partners",
+  title: "Corvant AI",
   description:
     "We help you achieve better business results, from strategy to execution, with an AI-first approach.",
   openGraph: {
-    title: "Munich AI Partners",
+    title: "Corvant AI",
     description:
       "We help you achieve better business results, from strategy to execution, with an AI-first approach.",
     type: "website",

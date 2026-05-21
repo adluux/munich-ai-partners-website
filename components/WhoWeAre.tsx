@@ -34,7 +34,7 @@ export default function WhoWeAre({ className, content }: WhoWeAreProps) {
       )}
     >
       <FadeInWrapper className="mx-auto flex max-w-prose flex-col items-center gap-4 text-center">
-        <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
+        <h2 className="font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[34px]">
           {content.team.heading}
         </h2>
         <p className="font-sans text-[16px] font-normal leading-[1.5] text-text">

@@ -19,7 +19,7 @@ export default function Testimonials({ className, content }: TestimonialsProps) 
     >
       <div className="mx-auto max-w-container">
         <FadeInWrapper className="flex flex-col gap-3">
-          <h2 className="max-w-prose font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[40px]">
+          <h2 className="max-w-prose font-heading text-[28px] font-bold leading-[1.3] text-primary md:text-[34px]">
             {content.testimonials.heading}
           </h2>
         </FadeInWrapper>
