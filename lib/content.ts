@@ -93,6 +93,12 @@ export interface SiteContent {
     heading: string;
     body: string;
     ctaLabel: string;
+    modalTitle: string;
+    modalBody: string;
+    emailPlaceholder: string;
+    downloadLabel: string;
+    fileHref: string;
+    fileName: string;
   };
 }
 
@@ -268,6 +274,13 @@ const translations: Record<Locale, SiteContent> = {
       heading: "An example of how we use AI",
       body: "This is the full playbook we used to build the site you're on.",
       ctaLabel: "Download the playbook",
+      modalTitle: "AI-first website creation playbook",
+      modalBody:
+        "If you want to receive business and AI tips from us, please leave your email. If you don't want to, that's ok - download the playbook",
+      emailPlaceholder: "Optional",
+      downloadLabel: "Download",
+      fileHref: "/playbook/corvant-ai-website-creation-playbook.pdf",
+      fileName: "Corvant AI_website_creation_playbook.pdf",
     },
   },
   de: {
@@ -419,6 +432,13 @@ const translations: Record<Locale, SiteContent> = {
       heading: "Ein Beispiel dafür, wie wir KI einsetzen",
       body: "Das ist der vollständige Leitfaden, mit dem wir diese Website erstellt haben.",
       ctaLabel: "Leitfaden herunterladen",
+      modalTitle: "AI-first website creation playbook",
+      modalBody:
+        "If you want to receive business and AI tips from us, please leave your email. If you don't want to, that's ok - download the playbook",
+      emailPlaceholder: "Optional",
+      downloadLabel: "Download",
+      fileHref: "/playbook/corvant-ai-website-creation-playbook.pdf",
+      fileName: "Corvant AI_website_creation_playbook.pdf",
     },
   },
 };

@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
-import Link from "next/link";
 import FadeInWrapper from "./FadeInWrapper";
+import PlaybookModalTrigger from "./PlaybookModalTrigger";
 import type { SiteContent } from "@/lib/content";
 
 interface LeadMagnetProps {
@@ -21,12 +21,15 @@ export default function LeadMagnet({ className, content }: LeadMagnetProps) {
           <p className="font-sans text-[16px] font-normal leading-[1.5] text-text">
             {content.leadMagnet.body}
           </p>
-          <Link
-            href="#"
-            className="mx-auto inline-flex items-center justify-center rounded-lg border-2 border-primary px-6 py-3 font-sans text-[16px] font-semibold leading-[1.3] text-primary transition duration-300 hover:bg-primary hover:text-white"
-          >
-            {content.leadMagnet.ctaLabel}
-          </Link>
+          <PlaybookModalTrigger
+            ctaLabel={content.leadMagnet.ctaLabel}
+            modalTitle={content.leadMagnet.modalTitle}
+            modalBody={content.leadMagnet.modalBody}
+            emailPlaceholder={content.leadMagnet.emailPlaceholder}
+            downloadLabel={content.leadMagnet.downloadLabel}
+            fileHref={content.leadMagnet.fileHref}
+            fileName={content.leadMagnet.fileName}
+          />
         </div>
       </FadeInWrapper>
     </section>
