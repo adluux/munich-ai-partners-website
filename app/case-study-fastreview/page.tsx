@@ -1,5 +1,5 @@
 import StaticPage from "@/lib/staticPage";
 
 export default function Page() {
-  return <StaticPage fileName="homepage.html" />;
+  return <StaticPage fileName="case-study-fastreview.html" />;
 }
