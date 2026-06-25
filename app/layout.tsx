@@ -3,14 +3,27 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Corvant AI",
+  metadataBase: new URL("https://corvantai.com"),
+  title: {
+    default: "Corvant AI — AI-first business results, from strategy to execution",
+    template: "%s | Corvant AI",
+  },
   description:
-    "We help you achieve better business results, from strategy to execution, with an AI-first approach.",
+    "Munich-based AI-first consultancy. We identify your highest-value bottleneck, fix it hands-on, and tie our fee to the agreed outcome — not billable hours.",
   openGraph: {
-    title: "Corvant AI",
-    description:
-      "We help you achieve better business results, from strategy to execution, with an AI-first approach.",
     type: "website",
+    siteName: "Corvant AI",
+    locale: "en_US",
+    url: "/",
+    title: "Corvant AI — AI-first business results, from strategy to execution",
+    description:
+      "Munich-based AI-first consultancy. We identify your highest-value bottleneck, fix it hands-on, and tie our fee to the agreed outcome — not billable hours.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Corvant AI — AI-first business results, from strategy to execution",
+    description:
+      "Munich-based AI-first consultancy. We identify your highest-value bottleneck, fix it hands-on, and tie our fee to the agreed outcome — not billable hours.",
   },
 };
 
