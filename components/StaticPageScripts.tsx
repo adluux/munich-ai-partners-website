@@ -30,6 +30,8 @@ export default function StaticPageScripts() {
       btn.classList.toggle("is-open", isOpen);
       btn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
       btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      // Lock background scroll while the full-screen overlay is open.
+      document.body.style.overflow = isOpen ? "hidden" : "";
     };
 
     const onToggle = () => setState(!menu.classList.contains("is-open"));
@@ -42,6 +44,7 @@ export default function StaticPageScripts() {
     return () => {
       btn.removeEventListener("click", onToggle);
       links.forEach((link) => link.removeEventListener("click", onClose));
+      document.body.style.overflow = "";
     };
   }, []);
 
