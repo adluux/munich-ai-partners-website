@@ -1,6 +1,8 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+import StaticPageScripts from "@/components/StaticPageScripts";
+
 const bookingUrl =
   "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0v6PZydheL8-0l8arI22xHx1dA8xCfDbfel5C2ClMbEk4A3z1ydExnDRb4E--EAlmC93C8c74U";
 const googleFontsLink =
@@ -46,7 +48,7 @@ function fixHomepageLinks(html: string): string {
 function fixSubpageLinks(html: string): string {
   return html
     .replace(/href="#" class="back-link"/g, 'href="/" class="back-link"')
-    .replace(/href="#">Case Studies/g, 'href="/#results">Case Studies')
+    .replace(/href="#">Case studies/g, 'href="/#results">Case studies')
     .replace(/href="#">How we work/g, 'href="/#how">How we work')
     .replace(/href="#">Team/g, 'href="/#team">Team')
     .replace(/href="#">FAQ/g, 'href="/#faq">FAQ')
@@ -79,6 +81,7 @@ export default function StaticPage({ fileName }: StaticPageProps) {
       <div dangerouslySetInnerHTML={{ __html: googleFontsLink }} />
       <style dangerouslySetInnerHTML={{ __html: style }} />
       <div dangerouslySetInnerHTML={{ __html: body }} />
+      <StaticPageScripts />
     </>
   );
 }
