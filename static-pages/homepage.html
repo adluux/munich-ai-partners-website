@@ -271,8 +271,11 @@ body { font-family: 'Inter', sans-serif; color: #111; background: #fff; -webkit-
 
 @media (max-width: 720px) {
   .outcomes-row, .team-row { grid-template-columns: 1fr; }
-  .outcomes-row { grid-template-rows: auto; }
+  .outcomes-row { grid-template-rows: auto; row-gap: 1.25rem; }
   .outcome-col { grid-row: span 1; display: flex; flex-direction: column; }
+  /* In the mobile flex column, align-self:end (a desktop subgrid setting) maps to
+     the horizontal axis and pushes this element + its divider border right. Reset it. */
+  .outcome-result-label { align-self: stretch; }
   .hero h1 { font-size: 26px; }
   .hero-aside { font-size: 17px; }
   .nav { padding: 0 1.25rem; }
@@ -508,16 +511,8 @@ body { font-family: 'Inter', sans-serif; color: #111; background: #fff; -webkit-
       <div class="team-info">
         <p class="team-name">Ivan Skoko</p>
         <p class="team-title-label">Partner</p>
-        <p class="team-bio-lead">AI-first business and product leader who has delivered enterprise software across banking and fintech, e&#8209;commerce, legal, pharma, and automotive.</p>
-        <ul class="team-bio-highlights">
-          <li>Currently VP Product Management at Trilogy: AI-driven strategy across SaaS portfolio</li>
-          <li>Transformed 6 businesses (13 SaaS products) into AI-first, high-profit organisations</li>
-          <li>Led delivery of flagship Commerce product, deployed to 1,400+ enterprise customers at SAP (CX)</li>
-          <li>Co-founded Adluux (AI/ML ad-tech); product, AI strategy, go-to-market</li>
-          <li>Managed the first enterprise delivery of FidorOS to Abu Dhabi Islamic Bank at Fidor Solutions</li>
-          <li>Head of Product at Tradelite Solutions (web3/AI fintech)</li>
-          <li>Corporate and investment banking at Raiffeisen Bank International</li>
-        </ul>
+        <p class="team-bio-lead">AI-first business and product leader who has delivered enterprise software across banking and fintech, e&#8209;commerce, legal, pharma, advertising, and other industries.</p>
+        <p class="team-bio">Ivan has spent 17+ years in business, the first half in investment and corporate banking, the second in technology. He founded an AI adtech company that launched in seven markets, then led SAP's Commerce Cloud program from build to launch, scaling it to 1,400+ enterprise customers. For the past three years, he's applied a strict AI-first approach to a private equity portfolio at Trilogy, transforming 13 SaaS products across 6 companies into highly profitable businesses.</p>
         <a href="#" class="team-linkedin">LinkedIn →</a>
       </div>
     </div>
@@ -527,15 +522,7 @@ body { font-family: 'Inter', sans-serif; color: #111; background: #fff; -webkit-
         <p class="team-name">Tracy Chang</p>
         <p class="team-title-label">Partner</p>
         <p class="team-bio-lead">Strategic and hands-on business owner who has launched products, scaled teams, and built companies in challenging conditions.</p>
-        <ul class="team-bio-highlights">
-          <li>Recovered a delayed programme to launch Fidor Bank UK, on time and on budget</li>
-          <li>Steered 6 concurrent digital transformation programmes for global clients including o2 Telefónica, Abu Dhabi Islamic Bank, and Van Lanschot Kempen</li>
-          <li>Built a professional services team from 0 to 60+ people at Fidor Solutions</li>
-          <li>Coordinated 5 cross-functional teams across a 30+ country project at Standard Chartered</li>
-          <li>Restored requirement alignment across a 4+ vendor banking systems migration at Bank of Scotland</li>
-          <li>Led AI and fintech transformation at Trestle Group for dwp bank and FIS</li>
-          <li>Co-founded Tradelite Solutions (web3/AI fintech); CPO then CEO, raised over €4 million</li>
-        </ul>
+        <p class="team-bio">Over the past 17+ years, Tracy has led digital transformation and built businesses across banking, fintech, and technology. At Standard Chartered, she led projects focused on software revamp, operational efficiency and customer service excellence. She turned around a delayed Fidor Bank UK launch and grew Fidor Solutions' professional services team from 0 to 60+ people, while steering transformation programs for clients including o2 Telefónica and Abu Dhabi Islamic Bank. She later headed AI and fintech services at Trestle Group, before co-founding Tradelite Solutions, where she rose from CPO to CEO.</p>
         <a href="#" class="team-linkedin">LinkedIn →</a>
       </div>
     </div>
@@ -545,14 +532,7 @@ body { font-family: 'Inter', sans-serif; color: #111; background: #fff; -webkit-
         <p class="team-name">Michael Malderle</p>
         <p class="team-title-label">Partner</p>
         <p class="team-bio-lead">Results-driven enterprise sales leader who has exceeded targets and scaled complex B2B partnerships across industrial technology.</p>
-        <ul class="team-bio-highlights">
-          <li>Led DACH sales for Tridium (Honeywell), achieving 109% of USD 6.2M FY2021 quota</li>
-          <li>Delivered 31% YoY growth in FY2022 despite DACH market headwinds</li>
-          <li>Scaled smart-building opportunity with Jisc across 70+ UK education campuses</li>
-          <li>Reignited dormant SAP SaaS opportunity across the US, Germany, and India</li>
-          <li>Supported Johnson Controls transformation programme delivering €48M growth over three years</li>
-          <li>Built trust across complex stakeholder groups to keep strategic initiatives moving under pressure</li>
-        </ul>
+        <p class="team-bio">Michael has spent the last decade closing complex enterprise deals in industrial technology. He led DACH sales for Tridium (Honeywell) to 109% of a $6.2M quota, then grew it another 31% the following year despite a tough market. He's since scaled a smart-building rollout with Jisc across 70+ UK campuses and helped steer Johnson Controls through a transformation that added €48M in growth over three years.</p>
         <a href="#" class="team-linkedin">LinkedIn →</a>
       </div>
     </div>
