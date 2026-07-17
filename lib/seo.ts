@@ -37,6 +37,31 @@ export const homepageJsonLd: Record<string, unknown> = {
   ],
 };
 
+export const homepageJsonLdDe: Record<string, unknown> = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${SITE_URL}/#organization`,
+  name: "Corvant AI",
+  url: `${SITE_URL}/de`,
+  description:
+    "Münchner AI-first-Beratung. Wir identifizieren den wertvollsten Engpass in Ihrem Unternehmen, lösen ihn hands-on und koppeln unser Honorar an das vereinbarte Ergebnis.",
+  areaServed: "Worldwide",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "München",
+    addressCountry: "DE",
+  },
+  parentOrganization: { "@type": "Organization", name: "Hitead GmbH" },
+  knowsAbout: [
+    "KI-Strategie",
+    "Produktmanagement",
+    "Softwareentwicklung",
+    "Finanzierung",
+    "Go-to-Market",
+    "Digitale Transformation",
+  ],
+};
+
 export function caseStudyJsonLd(args: {
   headline: string;
   description: string;

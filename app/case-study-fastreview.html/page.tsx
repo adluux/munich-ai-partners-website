@@ -12,7 +12,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: HEADLINE,
   description: DESCRIPTION,
-  alternates: { canonical: PATH },
+  alternates: { canonical: PATH, languages: { en: PATH, de: "/de" + PATH, "x-default": PATH } },
   openGraph: { url: PATH, type: "article", title: HEADLINE, description: DESCRIPTION },
 };
 

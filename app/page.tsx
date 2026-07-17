@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   },
   description:
     "Munich-based AI-first consultancy. We identify your highest-value bottleneck, fix it hands-on, and tie our fee to the agreed outcome — not billable hours. Experience across banking, fintech, legal, telecom and more.",
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", languages: { en: "/", de: "/de", "x-default": "/" } },
   openGraph: { url: "/" },
 };
 

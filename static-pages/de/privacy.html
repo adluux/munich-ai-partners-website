@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutz | Corvant AI</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; color: #111; background: #fff; -webkit-font-smoothing: antialiased; }
+.nav { position: sticky; top: 0; z-index: 100; background: #000; padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+.nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; color: #fff; text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; }
+.nav-logo-corvant { font-weight: 600; }
+.nav-logo-ai { font-weight: 300; }
+.nav-links { display: flex; align-items: center; gap: 1.75rem; }
+.nav-links a { font-size: 13.5px; color: rgba(255,255,255,0.75); text-decoration: none; }
+.nav-links a:hover { color: #fff; }
+.nav-links a.nav-cta { border: 1px solid #fff; color: #fff; font-size: 13.5px; font-weight: 500; padding: 9px 20px; border-radius: 6px; background: transparent; transition: background 0.15s, color 0.15s; }
+.nav-links a.nav-cta:hover { background: #fff; color: #000; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888; text-decoration: none; padding: 2rem 3.5rem 0; }
+.back-link:hover { color: #000; }
+.legal-body { padding: 2rem 3.5rem 4rem; max-width: 740px; }
+.legal-body h1 { font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; color: #000; margin-bottom: 2rem; }
+.legal-body h2 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: #000; margin: 2rem 0 0.75rem; }
+.legal-body p { font-size: 15px; line-height: 1.8; color: #4a4a4a; margin-bottom: 0.75rem; }
+.legal-body ul { font-size: 15px; line-height: 1.8; color: #4a4a4a; margin: 0.5rem 0 0.75rem 1.5rem; }
+.legal-body li { margin-bottom: 0.25rem; }
+.legal-body a { color: #000; text-decoration: underline; }
+.legal-body a:hover { color: #555; }
+.legal-body .legal-address { margin-bottom: 0.75rem; }
+.legal-body .legal-address p { margin-bottom: 0; line-height: 1.6; }
+.footer { background: #000; padding: 2rem 3.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-left { font-size: 13px; color: rgba(255,255,255,0.4); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; }
+.footer-links a:hover { color: rgba(255,255,255,0.8); }
+@media (max-width: 720px) {
+  .legal-body, .back-link, .footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .legal-body h1 { font-size: 26px; }
+  .nav { padding: 0 1.25rem; }
+  .nav-links a:not(.nav-cta) { display: none; }
+}
+
+/* ── HAMBURGER BUTTON (hidden on desktop) ─────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 22px;
+  height: 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 1px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.nav-hamburger.is-open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-hamburger.is-open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.is-open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ── MOBILE MENU PANEL ────────────────────────────────────────────── */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 62px;            /* sits directly below the sticky nav (62px tall) */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  padding: 1.5rem 1.25rem 2rem;
+  overflow-y: auto;
+  z-index: 99;          /* under the nav (z-index:100) so the × stays clickable */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.mobile-menu.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+.mobile-menu-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: block;
+}
+.mobile-menu-link:last-of-type { border-bottom: none; }
+.mobile-menu-cta {
+  display: block;
+  margin-top: 1.25rem;
+  background: #fff;
+  color: #000;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* ── MOBILE BREAKPOINT ────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .nav-hamburger { display: flex; }
+  .mobile-menu { display: flex; }
+  .nav-links a.nav-cta { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo"><span class="nav-logo-corvant">Corvant</span><span class="nav-logo-ai"> AI</span></a>
+  <div class="nav-links">
+    <a href="/de#results">Fallstudien</a>
+    <a href="/de#how">So arbeiten wir</a>
+    <a href="/de#team">Team</a>
+    <a href="/de#faq">FAQ</a>
+    <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0v6PZydheL8-0l8arI22xHx1dA8xCfDbfel5C2ClMbEk4A3z1ydExnDRb4E--EAlmC93C8c74U" class="nav-cta">Erstgespräch buchen</a>
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/de#results" class="mobile-menu-link">Fallstudien</a>
+  <a href="/de#how" class="mobile-menu-link">So arbeiten wir</a>
+  <a href="/de#team" class="mobile-menu-link">Team</a>
+  <a href="/de#faq" class="mobile-menu-link">FAQ</a>
+  <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0v6PZydheL8-0l8arI22xHx1dA8xCfDbfel5C2ClMbEk4A3z1ydExnDRb4E--EAlmC93C8c74U" class="mobile-menu-cta" target="_blank" rel="noopener">Kostenloses Erstgespräch buchen →</a>
+</div>
+
+<a href="/de" class="back-link">← Zurück</a>
+
+<section class="legal-body">
+<h1>Datenschutzerklärung</h1>
+
+<h2>Unternehmensangaben</h2>
+<p>Corvant AI ist eine Marke der Hitead GmbH, dem Anbieter dieser Website im Sinne von § 5 DDG.</p>
+
+<h2>1. Verantwortlicher</h2>
+<p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
+<div class="legal-address">
+<p>Hitead GmbH</p>
+<p>Winzererstrasse 115</p>
+<p>80797 München</p>
+<p>Deutschland</p>
+</div>
+<p>E-Mail: <a href="mailto:hello@corvantai.com">hello@corvantai.com</a></p>
+
+<h2>2. Überblick der Datenverarbeitung</h2>
+<p>Wir verarbeiten personenbezogene Daten ausschließlich im Rahmen der gesetzlichen Vorgaben, insbesondere der Datenschutz-Grundverordnung (DSGVO).</p>
+<p>Die Verarbeitung erfolgt nur, soweit dies für den Betrieb dieser Website, die Bereitstellung unserer Inhalte und die Kommunikation erforderlich ist.</p>
+
+<h2>3. Hosting und Server-Logfiles</h2>
+<p>Beim Besuch dieser Website werden automatisch Informationen durch den Hosting-Anbieter erfasst und in sogenannten Server-Logfiles gespeichert. Dazu gehören insbesondere:</p>
+<ul>
+<li>IP-Adresse</li>
+<li>Datum und Uhrzeit des Zugriffs</li>
+<li>Browsertyp und -version</li>
+<li>Betriebssystem</li>
+<li>Referrer-URL</li>
+<li>Aufgerufene Seite bzw. Datei</li>
+</ul>
+<p>Diese Daten sind technisch erforderlich, um die Stabilität, Sicherheit und Funktionsfähigkeit der Website zu gewährleisten.</p>
+<p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und stabilen Webseitenbetrieb)</p>
+<p>Eine Zusammenführung dieser Daten mit anderen Datenquellen erfolgt nicht.</p>
+
+<h2>4. Kontaktaufnahme per E-Mail</h2>
+<p>Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir die von Ihnen übermittelten personenbezogenen Daten (z. B. Name, E-Mail-Adresse, Inhalt der Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage.</p>
+<p><strong>Rechtsgrundlage:</strong></p>
+<ul>
+<li>Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Kommunikation) oder</li>
+<li>Art. 6 Abs. 1 lit. f DSGVO (allgemeine Anfragen)</li>
+</ul>
+<p>Die Daten werden gelöscht, sobald die Anfrage abschließend bearbeitet wurde, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
+
+<h2>5. Google Calendar Terminbuchung</h2>
+<p>Diese Website enthält Links zu Terminbuchungsseiten von Google Calendar.</p>
+<p>Beim Anklicken eines solchen Links werden Sie zu Diensten von Google weitergeleitet. Für die anschließende Datenverarbeitung ist Google Ireland Limited bzw. Google LLC verantwortlich.</p>
+<p>Auf die Datenverarbeitung durch Google haben wir keinen Einfluss.</p>
+<p>Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></p>
+<p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Terminvereinbarung im Rahmen vorvertraglicher Maßnahmen)</p>
+
+<h2>6. Links zu LinkedIn</h2>
+<p>Unsere Website enthält Links zu LinkedIn-Profilen.</p>
+<p>Beim Anklicken werden Sie auf die Plattform LinkedIn weitergeleitet. LinkedIn ist für die Verarbeitung personenbezogener Daten eigenständig verantwortlich.</p>
+<p>Wir erhalten keine personenbezogenen Daten von LinkedIn im Zusammenhang mit dem Besuch dieser Links.</p>
+<p>Datenschutzerklärung von LinkedIn: <a href="https://www.linkedin.com/legal/privacy-policy">https://www.linkedin.com/legal/privacy-policy</a></p>
+
+<h2>7. Rechte der betroffenen Personen</h2>
+<p>Sie haben folgende Rechte gemäß DSGVO:</p>
+<ul>
+<li>Auskunft (Art. 15 DSGVO)</li>
+<li>Berichtigung (Art. 16 DSGVO)</li>
+<li>Löschung (Art. 17 DSGVO)</li>
+<li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+<li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+<li>Widerspruch (Art. 21 DSGVO)</li>
+</ul>
+<p>Sie haben außerdem das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.</p>
+
+<h2>8. Datensicherheit</h2>
+<p>Wir treffen angemessene technische und organisatorische Maßnahmen, um personenbezogene Daten vor Verlust, Missbrauch und unbefugtem Zugriff zu schützen.</p>
+
+<h2>9. Aktualisierung dieser Datenschutzerklärung</h2>
+<p>Diese Datenschutzerklärung kann bei Bedarf angepasst werden, um rechtlichen oder technischen Änderungen Rechnung zu tragen.</p>
+</section>
+
+<footer class="footer">
+  <span class="footer-left">Corvant AI, eine Marke der Hitead GmbH · München, Deutschland · © 2026</span>
+  <div class="footer-links">
+    <a href="/de/legal.html">Impressum</a>
+    <a href="/de/privacy.html">Datenschutz</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -14,6 +14,9 @@ import { useEffect } from "react";
  */
 export default function StaticPageScripts() {
   useEffect(() => {
+    // Reflect the page language on <html> (the shared root layout renders lang="en").
+    document.documentElement.lang = window.location.pathname.startsWith("/de") ? "de" : "en";
+
     // FAQ accordion: the markup calls onclick="toggle(this)", so expose a global.
     const toggle = (el: HTMLElement) => {
       el.parentElement?.classList.toggle("open");

@@ -3,16 +3,16 @@ import type { Metadata } from "next";
 import StaticPage from "@/lib/staticPage";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Datenschutz",
   description:
-    "Privacy policy for Corvant AI describing how personal data is collected, used, and protected.",
+    "Datenschutzerklärung von Corvant AI: wie personenbezogene Daten erhoben, genutzt und geschützt werden.",
   alternates: {
-    canonical: "/privacy.html",
+    canonical: "/de/privacy.html",
     languages: { en: "/privacy.html", de: "/de/privacy.html", "x-default": "/privacy.html" },
   },
-  openGraph: { url: "/privacy.html" },
+  openGraph: { url: "/de/privacy.html", locale: "de_DE" },
 };
 
 export default function Page() {
-  return <StaticPage fileName="privacy.html" />;
+  return <StaticPage fileName="de/privacy.html" />;
 }

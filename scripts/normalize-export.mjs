@@ -7,6 +7,11 @@ const pages = [
   "case-study-fastreview.html",
   "legal.html",
   "privacy.html",
+  "de/case-study-urbanpoint.html",
+  "de/case-study-starise-ai.html",
+  "de/case-study-fastreview.html",
+  "de/legal.html",
+  "de/privacy.html",
 ];
 
 for (const page of pages) {
